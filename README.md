@@ -11,9 +11,9 @@
 | Aşama | Durum | İlerleme |
 |-------|-------|----------|
 | **Phase 1: SynScript Dili** | ✅ TAMAMLANDI | 100% |
-| **Phase 2: Godot Entegrasyonu** | ⏳ SIRADET | 0% |
-| **Phase 3: Phaser (Web)** | 🧊 PLANLAMADA | 0% |
-| **Phase 4: IDE & Ekosistem** | 🧊 PLANLAMADA | 0% |
+| **Phase 2: Godot Entegrasyonu** | ⏳ SIRADA | 0% |
+| **Phase 3: Phaser (Web)** | 🧊 PLANLANIYOR | 0% |
+| **Phase 4: IDE & Ekosistem** | 🧊 PLANLANIYOR | 0% |
 
 **Son Güncelleme**: 5 Mart 2026
 
@@ -119,22 +119,22 @@ SynEngine-by-Synthesis-Lab-/
 
 ---
 
-## 🔧 Kurulum & Setup
+## 🔧 Kurulum & Ayarı
 
 ### Gereksinimler
 - .NET 10.0 SDK
 - Python 3.8+
-- VS Code (opsiyonel, dil desteği için)
+- VS Code (isteğe bağlı, dil desteği için)
 - Git
 
 ### Windows
 
 ```powershell
-# Repository'yi klon et
+# Depoyu klonla
 git clone https://github.com/synthesis-lab/synengine
 cd synengine
 
-# .NET projesini build et
+# .NET projesini derle
 cd SynEngine.Core
 dotnet build
 dotnet run
@@ -143,17 +143,17 @@ dotnet run
 ### Linux / macOS
 
 ```bash
-# Repository'yi klon et
+# Depoyu klonla
 git clone https://github.com/synthesis-lab/synengine
 cd synengine
 
-# .NET projesini build et
+# .NET projesini derle
 cd SynEngine.Core
 dotnet build
 dotnet run
 ```
 
-### VS Code Extension Kurulumu
+### VS Code Eklentisi Kurulumu
 
 1. `SynScript/vscode/` klasörünü kopyala:
    ```bash
@@ -162,7 +162,7 @@ dotnet run
 
 2. VS Code'u yeniden başlat
 
-3. `.syn` dosyası oluştur ve test et
+3. `.syn` dosyası oluştur ve sına
 
 ---
 
@@ -186,24 +186,24 @@ dotnet run
 - ✅ VS Code syntax highlighting
 - ✅ 15+ Code snippets
 
-### Phase 2 ⏳ (SIRADET)
+### Phase 2 ⏳ (SIRADA)
 - ⏳ Godot entegrasyonu
-- ⏳ Python.NET in-memory bridge
-- ⏳ SynActor wrapper
-- ⏳ Signal mapping
-- ⏳ Inspector integration
+- ⏳ Python.NET bellek içi köprüsü
+- ⏳ SynActor sarmalayıcısı
+- ⏳ Sinyal eşlemesi
+- ⏳ Inspector entegrasyonu
 
-### Phase 3 🧊 (PLANLAMADA)
+### Phase 3 🧊 (PLANLANIYOR)
 - 🧊 Phaser (Web) entegrasyonu
-- 🧊 Brython/Pyodide runtime
+- 🧊 Brython/Pyodide çalışma ortamı
 - 🧊 JavaScript transpiler
-- 🧊 Web asset management
+- 🧊 Web varlık yönetimi
 
-### Phase 4 🧊 (PLANLAMADA)
+### Phase 4 🧊 (PLANLANIYOR)
 - 🧊 Language Server Protocol (LSP)
-- 🧊 Visual script editor
-- 🧊 Package manager
-- 🧊 Community marketplace
+- 🧊 Görsel betik editörü
+- 🧊 Paket yöneticisi
+- 🧊 Topluluk pazarı
 
 ---
 
@@ -224,13 +224,13 @@ var velocity = Vector2(0, 0)
 
 @process
 function _process(delta: float):
-    # Input alma
+    # Girdi alma
     var direction = Input.get_vector("left", "right", "up", "down")
     
     # Hareket
     velocity.x = direction.x * speed
     
-    # Yerçekimi
+    # Yer çekimi
     velocity.y += 600 * delta  # gravity
     
     # Pozisyon güncelle
@@ -247,16 +247,16 @@ function on_hit(damage: int):
 
 ---
 
-## 🧪 Test & Validation
+## 🧪 Test & Doğrulama
 
 ```bash
-# Syntax validation
+# Söz dizimi doğrulaması
 dotnet run validate script.syn
 
-# Execute test function
+# Test fonksiyonunu çalıştır
 dotnet run execute script.syn test_function
 
-# Full test suite
+# Tamamen test paketi
 dotnet test SynEngine.Core.Tests/
 ```
 
@@ -265,43 +265,43 @@ dotnet test SynEngine.Core.Tests/
 ## 🤝 Katkıda Bulunma
 
 ### İyi Başlangıç Konuları
-1. **StdLib Genişletmesi**: Yeni matematik/physics fonksiyonları
-2. **Örnek Oyunlar**: Kütüphanelerin kullanımı gösteren örnekler
-3. **Dokümentasyon**: Türkçe, İngilizce API dökümanları
-4. **Tests**: Unit test yazma
-5. **Performance**: Profiling ve optimizasyon
+1. **StdLib Genişletmesi**: Yeni matematik/fizik fonksiyonları
+2. **Örnek Oyunlar**: Kütüphanelerin kullanımını gösteren örnekler
+3. **Belgelendirme**: Türkçe, İngilizce API belgeleri
+4. **Testler**: Birim testleri yazma
+5. **Performans**: Profilleme ve iyileştirme
 
-### Development Setup
+### Geliştirme Ayarı
 
 ```bash
-# Fork ve clone et
+# Fork ve klonla
 git clone https://github.com/YOUR_GITHUB/synengine
 cd synengine
 
-# Feature branch oluştur
+# Özellik dalı oluştur
 git checkout -b feature/your-feature
 
-# Değişiklikleri commit et
+# Değişiklikleri teslim et
 git commit -am "Add new feature"
 
-# Push et
+# Gönder
 git push origin feature/your-feature
 
-# Pull request aç
+# Pull request açın
 ```
 
-**Kontribüsyon Rehberi**: [CONTRIBUTING.md](CONTRIBUTING.md) (Yakında)
+**Katkı Rehberi**: [CONTRIBUTING.md](CONTRIBUTING.md) (Yakında)
 
 ---
 
 ## 📋 Bilinen Sorunlar
 
-| Sorun | Durum | Fix |
-|-------|-------|-----|
+| Sorun | Durum | Çözüm |
+|-------|-------|-------|
 | Godot entegrasyonu yok | 🔴 | Phase 2 başlangıcında |
-| ANTLR parser derlenmiş durumda değil | 🟡 | İleri sürüm |
+| ANTLR parser derlenmiş durumda değil | 🟡 | Sonraki sürüm |
 | Web desteği eksik | 🔴 | Phase 3 |
-| LSP server yok | 🔴 | Phase 4 |
+| LSP sunucusu yok | 🔴 | Phase 4 |
 
 ---
 
@@ -323,9 +323,9 @@ Phase 1 Tamamlama İstatistikleri:
 
 Hata mı buldum? [GitHub Issues](https://github.com/synthesis-lab/synengine/issues) üzerine bildir.
 
-Lütfen içer:
-- [ ] Hata açıklaması
-- [ ] Tekrar adımları
+Lütfen şunları ekleyin:
+- [ ] Hatanın açıklaması
+- [ ] Tekrarlama adımları
 - [ ] Beklenen vs gerçek davranış
 - [ ] SynEngine sürümü
 
@@ -333,10 +333,10 @@ Lütfen içer:
 
 ## 📝 Lisans
 
-SynEngine MIT License ile lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bak.
+SynEngine Apache License 2.0 ile lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
 ```
-MIT License (c) 2026 Synthesis Lab
+Apache License 2.0 © 2026 Synthesis Lab
 ```
 
 ---
@@ -363,15 +363,15 @@ MIT License (c) 2026 Synthesis Lab
 
 ## 🙏 Teşekkürler
 
-- **Godot Foundation** - Harika oyun motoru
-- **Python Software Foundation** - Python dilinin harika tasarımı  
-- **ANTLR Project** - Parser generator
-- **Synthesis Lab Team** - SynEngine'in kurucuları
+- **Godot Foundation** - Üstün oyun motoru
+- **Python Software Foundation** - Python dilinin mükemmel tasarımı  
+- **ANTLR Project** - Ayrıştırıcı üreticisi
+- **Synthesis Lab Ekibi** - SynEngine'in mimarları
 
 ---
 
-**SynEngine: Oyun Geliştirmeyi Herkes İçin Erişilebilir Kıl 🚀**
+**SynEngine: Oyun Geliştirmeyi Herkes İçin Erişilebilir Kılın 🚀**
 
-Detaylı yol haritası için [MASTER_ROADMAP.md](MASTER_ROADMAP.md) bak.
+Detaylı yol haritası için [MASTER_ROADMAP.md](MASTER_ROADMAP.md) bakın.
 
-**UPDATED**: 5 March 2026
+**SON GÜNCELLEME**: 6 Mart 2026

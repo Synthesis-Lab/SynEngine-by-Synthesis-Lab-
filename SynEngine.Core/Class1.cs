@@ -124,30 +124,28 @@ public class SynScriptTranspiler
     
     private string GenerateStdLibImports()
     {
-        return @"# ===== SynScript StdLib Imports =====
-from sys import path as _sys_path
-from os import path as _os_path
-_lib_path = _os_path.join(_os_path.dirname(__file__), '../../SynScript/StdLib')
-if _lib_path not in _sys_path:
-    _sys_path.insert(0, _lib_path)
-
-from synmath import SynMath
-from syncolor import SynColor
-from syntimer import SynTimer, DeltaTimer
-from synvector import Vector2, Vector3
-
-class Input:
-    @staticmethod
-    def is_action_pressed(action: str) -> bool:
-        return False
-    
-    @staticmethod
-    def is_action_released(action: str) -> bool:
-        return False
-
-# ===== End StdLib Imports =====
-
-";
+        return "# ===== SynScript StdLib Imports =====\n" +
+               "from sys import path as _sys_path\n" +
+               "from os import path as _os_path\n" +
+               "_lib_path = _os_path.join(_os_path.dirname(__file__), '../../SynScript/StdLib')\n" +
+               "if _lib_path not in _sys_path:\n" +
+               "    _sys_path.insert(0, _lib_path)\n" +
+               "\n" +
+               "from synmath import SynMath\n" +
+               "from syncolor import SynColor\n" +
+               "from syntimer import SynTimer, DeltaTimer\n" +
+               "from synvector import Vector2, Vector3\n" +
+               "\n" +
+               "class Input:\n" +
+               "    @staticmethod\n" +
+               "    def is_action_pressed(action: str) -> bool:\n" +
+               "        return False\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def is_action_released(action: str) -> bool:\n" +
+               "        return False\n" +
+               "\n" +
+               "# ===== End StdLib Imports =====\n\n";
     }
 }
 

@@ -72,9 +72,9 @@ GitHub Issues'den SynScript diline ilişkin hataları bildir:
 https://github.com/synthesis-lab/synengine/issues
 
 ## 📝 Lisans
-MIT License - © 2026 Synthesis Lab
+Apache License 2.0 - © 2026 Synthesis Lab
 
 ---
 
 **Sürüm**: 0.1.0  
-**Son Güncelleme**: 5 Mart 2026
+**Son Güncelleme**: 6 Mart 2026
