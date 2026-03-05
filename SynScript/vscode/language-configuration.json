@@ -31,6 +31,6 @@
   "wordPattern": "(-?\\d+\\.?\\d*)|([^\\`\\~\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)",
   "indentationRules": {
     "increaseIndentPattern": "^\\s*(elif|else|except|finally|for|if|try|while|with|case)(:|(->))\\s*($|#)",
-    "decreaseIndentPattern": "^\\s*(elif|else|except|finally|for|if|try|while|with|case)\\b|^\\s*[}\\]\\)]"
+    "decreaseIndentPattern": "^\\s*(elif|else|except|finally|for|if|try|while|with|case)\\b|^\\s*[}\\])]"
   }
 }

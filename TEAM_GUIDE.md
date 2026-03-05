@@ -12,7 +12,7 @@ Bu belge, ekibin **Phase 2 (Godot Entegrasyonu)** için hazırlanmasına yardım
 
 | Konu | Dosyalar | Durum |
 |------|----------|-------|
-| **SynScript Dili** | `SynScript/Grammar/SynScript.g4` | ✅ Completeş |
+| **SynScript Dili** | `SynScript/Grammar/SynScript.g4` | ✅ Tamamlandı |
 | **Standart Lib** | `SynScript/StdLib/*.py` | ✅ 40+ fonk. |
 | **Transpiler** | `SynEngine.Core/Class1.cs` | ✅ Çalışıyor |
 | **IDE Desteği** | `SynScript/vscode/` | ✅ Highlight + Snippets |
@@ -202,7 +202,7 @@ public class PerformanceProfiler
 | Görev | Sorumlu | Süresi | Deadline |
 |-------|---------|--------|----------|
 | StdLib physics module | Python Team | 6h | Tomorrow |
-| Unit tests yazı | Python Team | 6h | This week |
+| Unit tests yazma | Python Team | 6h | This week |
 | Python.NET araştırması | C# Team | 4h | Today |
 | Godot API wrapper sketch | C# Team | 4h | This week |
 | Documentation review | All | 2h | This week |
@@ -335,7 +335,7 @@ Week 4: Polish & Documentation
 
 ## 🎉 Başarı Sözcükleri
 
-> "Phase 1, bir oyun motorsunun temelini attı. Phase 2 ile onu gerçek hayata söndüreceğiz." - Team Lead
+> "Phase 1, bir oyun motorsunun temelini attı. Phase 2 ile onu hayata geçireceğiz." - Team Lead
 
 Emeğiniz için teşekkürler! 🙏
 

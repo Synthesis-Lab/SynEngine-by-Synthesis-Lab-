@@ -11,9 +11,9 @@ namespace SynEngine.Core;
 public class SynScriptError
 {
     public int LineNumber { get; set; }
-    public string Message { get; set; }
-    public string ErrorType { get; set; } // "SyntaxError", "TypeError", etc.
-    public string Code { get; set; }
+    public string? Message { get; set; }
+    public string? ErrorType { get; set; } // "SyntaxError", "TypeError", etc.
+    public string? Code { get; set; }
     
     public override string ToString()
     {
@@ -88,7 +88,7 @@ public class SynScriptTranspiler
             if (string.IsNullOrEmpty(trimmed) || trimmed.StartsWith("#"))
                 continue;
             
-            // Kapalı köşeli parantez kontrol et
+            // Parantez, bracket ve brace eşlemesini kontrol et
             foreach (var ch in trimmed)
             {
                 if (ch == '(') openParens++;
@@ -124,7 +124,7 @@ public class SynScriptTranspiler
     
     private string GenerateStdLibImports()
     {
-        return """# ===== SynScript StdLib Imports =====
+        return @"# ===== SynScript StdLib Imports =====
 from sys import path as _sys_path
 from os import path as _os_path
 _lib_path = _os_path.join(_os_path.dirname(__file__), '../../SynScript/StdLib')
@@ -147,7 +147,7 @@ class Input:
 
 # ===== End StdLib Imports =====
 
-""";
+";
     }
 }
 
@@ -156,13 +156,13 @@ public class SynScriptEngine
     private readonly SynScriptTranspiler _transpiler = new();
     private string _projectRoot;
     
-    public SynScriptEngine(string projectRoot = null)
+    public SynScriptEngine(string? projectRoot = null)
     {
         // Proje kök dizinini ayarla (StdLib bulmak için)
         _projectRoot = projectRoot ?? Directory.GetCurrentDirectory();
     }
 
-    public string ExecuteFunction(string functionName, string synScriptPath = null)
+    public string ExecuteFunction(string functionName, string? synScriptPath = null)
     {
         try
         {

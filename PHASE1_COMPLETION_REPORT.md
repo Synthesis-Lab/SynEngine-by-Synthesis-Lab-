@@ -31,7 +31,7 @@
 
 ### ✅ 3. Transpiler Geliştirimi
 - **SynScriptTranspiler** sınıfı yazıldı
-- Regex tabanlı dönüştürm kuralları (ilk aşama)
+- Regex tabanlı dönüştürme kuralları (ilk aşama)
 - Error handling sistemi
   - SynScriptError sınıfı
   - Syntax validation
@@ -99,7 +99,7 @@ SynEngine-by-Synthesis-Lab-/
 
 ### Dil Özelliği Testleri
 - ✅ `var` declaration
-- ✅ `function` dengan type hints
+- ✅ `function` with type hints
 - ✅ Kontrol akışı (if/elif/else, for, while)
 - ✅ Vector operasyonları
 - ✅ Matematiksel işlemler
@@ -197,7 +197,7 @@ Godot entegrasyonunu başlat (Phase 2):
 **Phase 1 başarıyla tamamlandı!** SynScript dili artık:
 - ✅ Formal olarak tanımlandı (ANTLR grammar)
 - ✅ Standart kütüphanesi yazıldı (4 modül, 40+ fonksiyon)
-- ✅ Transpiler'ı geliştiyildi (error handling dahil)
+- ✅ Transpiler'ı geliştildi (error handling dahil)
 - ✅ VS Code desteği sağlandı
 - ✅ Dokümantasyon ve örnekler hazırlandı
 

@@ -4,7 +4,7 @@
   "description": "Syntax highlighting and language support for SynScript (.syn) files",
   "version": "0.1.0",
   "publisher": "synthesis-lab",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "engines": {
     "vscode": "^1.90.0"
   },
