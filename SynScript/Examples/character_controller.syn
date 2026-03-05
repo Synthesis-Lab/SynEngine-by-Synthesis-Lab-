@@ -1,0 +1,109 @@
+# SynScript Örneği: Platforma Hareket Eden Oyuncu Karakteri
+# Bu script, oyun motorunun SynScript dilini test eder
+
+@export
+var health = 100
+
+@export  
+var speed = 150.0
+
+@export
+var jump_force = 300.0
+
+@export
+var gravity = 600.0
+
+@export
+var max_health = 100
+
+# Karakter durumu
+var velocity = Vector2(0, 0)
+var position = Vector2(200, 200)
+var is_jumping = false
+var current_animation = "idle"
+
+# Timers
+var hurt_timer = SynTimer(0.5, false)
+var invincible_timer = SynTimer(2.0, false)
+
+@on_ready
+function _ready():
+    print("Oyuncu hazırlandı! Sağlık: {health}, Hız: {speed}")
+
+@process
+function _process(delta):
+    # Hareket inputu
+    var velocity_x = 0.0
+    
+    if Input.is_action_pressed("move_left"):
+        velocity_x = -speed
+        current_animation = "run"
+    elif Input.is_action_pressed("move_right"):
+        velocity_x = speed
+        current_animation = "run"
+    else:
+        current_animation = "idle"
+    
+    # Yerçekimi
+    if not is_jumping:
+        velocity.y += gravity * delta
+    else:
+        velocity.y += gravity * delta
+    
+    # Zıplama
+    if Input.is_action_pressed("jump") and not is_jumping:
+        velocity.y = -jump_force
+        is_jumping = true
+        current_animation = "jump"
+    
+    # Yerde mi?
+    if position.y >= 200:
+        position.y = 200
+        velocity.y = 0
+        is_jumping = false
+    
+    # Pozisyon güncelle
+    velocity.x = velocity_x
+    position = position + velocity * delta
+    
+    # Ekran sınırları
+    if position.x < 0:
+        position.x = 0
+    elif position.x > 800:
+        position.x = 800
+
+@signal
+function on_damage_taken(damage: int):
+    if invincible_timer.is_finished:
+        health -= damage
+        hurt_timer.start()
+        invincible_timer.start()
+        
+        if health <= 0:
+            on_death()
+        else:
+            print(f"Oyuncu hasar aldı! Kalan sağlık: {health}")
+
+@signal
+function on_heal(amount: int):
+    health = SynMath.clamp(health + amount, 0, max_health)
+    print(f"Oyuncu iyileştirildi! Sağlık: {health}")
+
+function on_death():
+    print("Oyuncu öldü!")
+    current_animation = "death"
+
+function get_health_percentage() -> float:
+    return (health / max_health) * 100.0
+
+function get_position() -> Vector2:
+    return position
+
+function get_velocity() -> Vector2:
+    return velocity
+
+# Test fonksiyonu
+function test_character():
+    var health_pct = get_health_percentage()
+    var pos = get_position()
+    return f"Oyuncu: Sağlık={health}({health_pct:.1f}%), Pozisyon=({pos.x}, {pos.y}), Animasyon={current_animation}"

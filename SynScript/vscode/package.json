@@ -1,0 +1,52 @@
+{
+  "name": "synscript-language-support",
+  "displayName": "SynScript Language Support",
+  "description": "Syntax highlighting and language support for SynScript (.syn) files",
+  "version": "0.1.0",
+  "publisher": "synthesis-lab",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "synscript",
+        "aliases": [
+          "SynScript",
+          "synscript"
+        ],
+        "extensions": [
+          ".syn"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "synscript",
+        "scopeName": "source.syn",
+        "path": "./syntaxes/synscript.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "synscript",
+        "path": "./snippets/synscript.json"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/synthesis-lab/synengine"
+  },
+  "keywords": [
+    "game-development",
+    "scripting",
+    "python",
+    "gamedev"
+  ]
+}

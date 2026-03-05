@@ -1,0 +1,116 @@
+{
+  "name": "SynScript",
+  "scopeName": "source.syn",
+  "fileTypes": ["syn"],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#decorators"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#stdlib"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.hash.syn",
+          "match": "#.*$"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.syn",
+          "match": "\\b(if|elif|else|for|while|break|continue|return|in)\\b"
+        },
+        {
+          "name": "keyword.declaration.syn",
+          "match": "\\b(var|function)\\b"
+        },
+        {
+          "name": "constant.language.syn",
+          "match": "\\b(true|false|null)\\b"
+        }
+      ]
+    },
+    "decorators": {
+      "patterns": [
+        {
+          "name": "entity.name.decorator.syn",
+          "match": "@(export|on_ready|process|signal)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "support.type.builtin.syn",
+          "match": "\\b(int|float|string|bool|Vector2|Vector3|Color)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.syn",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.syn",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.syn",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.syn",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.syn",
+          "match": "\\b[0-9]+\\.[0-9]+([eE][+-]?[0-9]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.integer.syn",
+          "match": "\\b[0-9]+\\b"
+        }
+      ]
+    },
+    "stdlib": {
+      "patterns": [
+        {
+          "name": "support.class.stdlib.syn",
+          "match": "\\b(SynMath|SynColor|SynTimer|DeltaTimer|Vector2|Vector3|Input)\\b"
+        }
+      ]
+    }
+  }
+}

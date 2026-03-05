@@ -1,0 +1,82 @@
+# SynScript Dilinin Temel Özellikleri Testi
+# Bu script, SynScript'in Python'dan farklı söz dizimini gösterir
+
+@export
+var engine_version = "0.1"
+
+@export
+var game_title = "SynEngine Test Game"
+
+@export
+var max_players = 4
+
+# Test 1: Temel değişkenler ve fonksiyonlar
+var test_counter = 0
+var test_results = []
+
+@on_ready
+function initialize():
+    print(f"SynScript Engine {engine_version} initialized!")
+    print(f"Game: {game_title}")
+
+# Test 2: Matematik ve vektörler
+function test_math():
+    var pi = SynMath.PI
+    var sqrt2 = SynMath.sqrt(2.0)
+    var clamped = SynMath.clamp(150.0, 0.0, 100.0)
+    return f"PI={pi:.2f}, sqrt(2)={sqrt2:.2f}, clamp(150)={clamped}"
+
+# Test 3: Renkler
+function test_colors():
+    var red = SynColor.RED()
+    var custom = SynColor(0.5, 0.8, 0.3)
+    var hex = red.to_hex()
+    return f"Red hex: {hex}, Custom: {custom}"
+
+# Test 4: Vektörler
+function test_vectors():
+    var v1 = Vector2(3.0, 4.0)
+    var v2 = Vector2(1.0, 2.0)
+    var length = v1.length()
+    var distance = v1.distance_to(v2)
+    var normalized = v1.normalized()
+    return f"v1 length={length}, distance to v2={distance:.2f}, normalized=({normalized.x}, {normalized.y})"
+
+# Test 5: Kontrol akışı
+function test_control_flow():
+    var result = ""
+    var x = 5
+    
+    if x > 10:
+        result = "x > 10"
+    elif x > 3:
+        result = "3 < x <= 10"
+    else:
+        result = "x <= 3"
+    
+    return result
+
+# Test 6: Döngüler
+function test_loops():
+    var sum = 0
+    for i in range(5):
+        sum = sum + i
+    return f"Sum of 0..4: {sum}"
+
+# Test 7: Tipler (Type Hints)
+function typed_function(x: int, y: float) -> float:
+    return (x + y) * 2.0
+
+# Ana test fonksiyonu
+function test_synscript() -> string:
+    var output = ""
+    
+    output = output + "=== SynScript Language Tests ===\n"
+    output = output + f"Math: {test_math()}\n"
+    output = output + f"Colors: {test_colors()}\n"
+    output = output + f"Vectors: {test_vectors()}\n"
+    output = output + f"Control Flow: {test_control_flow()}\n"
+    output = output + f"Loops: {test_loops()}\n"
+    output = output + f"Typed Func: {typed_function(5, 2.5)}\n"
+    
+    return output

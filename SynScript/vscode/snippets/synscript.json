@@ -1,0 +1,114 @@
+{
+  "Variable Declaration": {
+    "prefix": "var",
+    "body": [
+      "var ${1:name}${2:: type} = ${3:value}"
+    ],
+    "description": "Declare a SynScript variable"
+  },
+  "Function Declaration": {
+    "prefix": "func",
+    "body": [
+      "function ${1:function_name}(${2:params}) -> ${3:return_type}:",
+      "\t${4:pass}"
+    ],
+    "description": "Declare a SynScript function"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": [
+      "if ${1:condition}:",
+      "\t${2:pass}"
+    ],
+    "description": "Create an if statement"
+  },
+  "If-Elif-Else": {
+    "prefix": "ifelse",
+    "body": [
+      "if ${1:condition1}:",
+      "\t${2:pass}",
+      "elif ${3:condition2}:",
+      "\t${4:pass}",
+      "else:",
+      "\t${5:pass}"
+    ],
+    "description": "Create an if-elif-else statement"
+  },
+  "For Loop": {
+    "prefix": "for",
+    "body": [
+      "for ${1:i} in ${2:iterable}:",
+      "\t${3:pass}"
+    ],
+    "description": "Create a for loop"
+  },
+  "While Loop": {
+    "prefix": "while",
+    "body": [
+      "while ${1:condition}:",
+      "\t${2:pass}"
+    ],
+    "description": "Create a while loop"
+  },
+  "Export Decorator": {
+    "prefix": "@export",
+    "body": [
+      "@export",
+      "var ${1:name} = ${2:value}"
+    ],
+    "description": "Export variable to editor"
+  },
+  "Ready Decorator": {
+    "prefix": "@ready",
+    "body": [
+      "@on_ready",
+      "function _ready():",
+      "\t${1:pass}"
+    ],
+    "description": "On ready handler"
+  },
+  "Process Decorator": {
+    "prefix": "@process",
+    "body": [
+      "@process",
+      "function _process(delta: float):",
+      "\t${1:pass}"
+    ],
+    "description": "Process frame handler"
+  },
+  "Vector2": {
+    "prefix": "vec2",
+    "body": [
+      "Vector2(${1:x}, ${2:y})"
+    ],
+    "description": "Create a Vector2"
+  },
+  "Vector3": {
+    "prefix": "vec3",
+    "body": [
+      "Vector3(${1:x}, ${2:y}, ${3:z})"
+    ],
+    "description": "Create a Vector3"
+  },
+  "Color": {
+    "prefix": "color",
+    "body": [
+      "SynColor(${1:r}, ${2:g}, ${3:b}${4:, a})"
+    ],
+    "description": "Create a Color"
+  },
+  "Timer": {
+    "prefix": "timer",
+    "body": [
+      "var ${1:timer} = SynTimer(${2:duration}, ${3:repeating})"
+    ],
+    "description": "Create a timer"
+  },
+  "Print Statement": {
+    "prefix": "print",
+    "body": [
+      "print(${1:message})"
+    ],
+    "description": "Print a message"
+  }
+}
