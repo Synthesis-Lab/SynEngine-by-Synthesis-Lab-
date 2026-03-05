@@ -1,16 +1,26 @@
-# Godot 4+ specific ignores
+# --- Godot Engellemeleri ---
 .godot/
-.nomedia
+*.import
+export_presets.cfg
 
-# Godot-specific ignores
-.import/
-export.cfg
-export_credentials.cfg
+# --- .NET / C# Engellemeleri ---
+bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.userprefs
+*.sln.dotsettings.user
 
-# Imported translations (automatically generated from CSV files)
-*.translation
+# --- Python Engellemeleri ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+.python-version
 
-# Mono-specific ignores
-.mono/
-data_*/
-mono_crash.*.json
+# --- Sistem Engellemeleri ---
+.DS_Store
+Thumbs.db
