@@ -1,14 +1,19 @@
 {
   "name": "synscript-language-support",
   "displayName": "SynScript - Game Development Language",
-  "description": "SynScript language support with syntax highlighting, dual themes, code snippets, linting, and @Operator namespaces for game development with Godot and Cocos2D",
-  "version": "0.3.0",
+  "description": "SynScript language support with syntax highlighting, dual themes, code snippets, linting, debugger, and @Operator namespaces for game development with Godot and Cocos2D",
+  "version": "0.3.1",
   "publisher": "SynthesisLab",
+  "author": "Synthesis Lab",
+  "main": "./extension.js",
   "icon": "icon.png",
   "license": "Apache-2.0",
   "engines": {
     "vscode": "^1.90.0"
   },
+  "activationEvents": [
+    "workspaceContains:**/*.syn"
+  ],
   "categories": [
     "Programming Languages"
   ],
@@ -51,6 +56,26 @@
         "path": "./themes/SynScript-Lab-Light.json"
       }
     ],
+    "commands": [
+      {
+        "command": "synscript.debug.start",
+        "title": "Hata Ayıklamayı Başlat",
+        "category": "SynScript",
+        "description": "Mevcut SynScript dosyasında hata ayıklamayı başlat"
+      },
+      {
+        "command": "synscript.run.file",
+        "title": "Dosyayı Çalıştır",
+        "category": "SynScript",
+        "description": "Mevcut SynScript dosyasını çalıştır"
+      },
+      {
+        "command": "synscript.debug.stop",
+        "title": "Hata Ayıklamayı Durdur",
+        "category": "SynScript",
+        "description": "Debugger'ı durdur"
+      }
+    ],
     "debuggers": [
       {
         "type": "synscript",
@@ -59,7 +84,9 @@
         "runtime": "node",
         "configurationAttributes": {
           "launch": {
-            "required": ["program"],
+            "required": [
+              "program"
+            ],
             "properties": {
               "program": {
                 "type": "string",
@@ -75,7 +102,10 @@
               },
               "console": {
                 "type": "string",
-                "enum": ["internalConsole", "integratedTerminal"],
+                "enum": [
+                  "internalConsole",
+                  "integratedTerminal"
+                ],
                 "default": "integratedTerminal"
               }
             }
@@ -83,22 +113,68 @@
         },
         "initialConfigurations": [
           {
-            "name": "SynScript: Launch",
+            "name": "SynScript: Program Başlat",
             "type": "synscript",
             "request": "launch",
             "program": "${workspaceFolder}/program.syn",
+            "args": [],
+            "console": "integratedTerminal"
+          },
+          {
+            "name": "SynScript: Mevcut Dosyayı Başlat",
+            "type": "synscript",
+            "request": "launch",
+            "program": "${file}",
+            "args": [],
+            "console": "integratedTerminal"
+          },
+          {
+            "name": "SynScript: Argümanlarla Başlat",
+            "type": "synscript",
+            "request": "launch",
+            "program": "${workspaceFolder}/game.syn",
+            "args": [
+              "--debug",
+              "--port=8080"
+            ],
             "console": "integratedTerminal"
           }
         ],
         "configurationSnippets": [
           {
-            "label": "SynScript: Launch Program",
-            "description": "Launch a SynScript program",
+            "label": "SynScript: Program Başlat",
+            "description": "SynScript programını başlat",
             "body": {
-              "name": "SynScript: Launch",
+              "name": "SynScript: Program Başlat",
               "type": "synscript",
               "request": "launch",
-              "program": "^\"\\${workspaceFolder}/program.syn\"",
+              "program": "${workspaceFolder}/program.syn",
+              "console": "integratedTerminal"
+            }
+          },
+          {
+            "label": "SynScript: Mevcut Dosyayı Başlat",
+            "description": "Mevcut SynScript dosyasını başlat",
+            "body": {
+              "name": "SynScript: Mevcut Dosyayı Başlat",
+              "type": "synscript",
+              "request": "launch",
+              "program": "${file}",
+              "console": "integratedTerminal"
+            }
+          },
+          {
+            "label": "SynScript: Argümanlarla Başlat",
+            "description": "SynScript programını argümanlarla başlat",
+            "body": {
+              "name": "SynScript: Argümanlarla Başlat",
+              "type": "synscript",
+              "request": "launch",
+              "program": "${workspaceFolder}/game.syn",
+              "args": [
+                "--debug",
+                "--port=8080"
+              ],
               "console": "integratedTerminal"
             }
           }
@@ -108,7 +184,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/synthesis-lab/synengine"
+    "url": "https://github.com/Synthesis-Lab/SynEngine-by-Synthesis-Lab-.git"
   },
   "keywords": [
     "game-development",

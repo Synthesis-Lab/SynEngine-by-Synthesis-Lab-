@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# SynScript Language Support for VS Code (v0.3.0)
+# SynScript Language Support for VS Code (v0.3.1)
 
 VS Code'da SynScript (.syn) dosyaları için tam dil desteği ve hata ayıklama sağlayan profesyonel uzantı.
 
@@ -37,7 +37,7 @@ VS Code'da SynScript (.syn) dosyaları için tam dil desteği ve hata ayıklama 
 ### Manuel Kurulum
 1. Bu dizini VS Code extensions klasörüne kopyala:
    ```bash
-   ~/.vscode/extensions/synscript-language-support-0.2.0/
+   ~/.vscode/extensions/synscript-language-support-0.4.0/
    ```
 
 2. VS Code'u yeniden başlat
@@ -55,16 +55,54 @@ npm install -g synscript-language-support
 3. Code parçacıklarını kullan (`Ctrl+Space` veya `Cmd+Space`)
 
 ### Debugger Kullanımı (v0.3.0) - YENİ
-1. **Breakpoint Ayarla**: Satır numarasının solundaki kenara tıkla
-2. **Koşullu Breakpoint**: Sağ tıkla → "Add Conditional Breakpoint" → Koşul gir (örn: `count > 10`)
-3. **Logpoint**: Sağ tıkla → "Add Logpoint" → Mesaj gir (örn: `Counter: {count}`)
-4. **Debug Başlat**: `F5` veya "Run and Debug" panelinden
-5. **Adım Adım Çalıştır**: `F10` (step over), `F11` (step in)
-6. **Continue**: `F5` (sonraki breakpoint'e kadar)
-7. **Değişkenleri İncele**: Debug paneldeki "Variables" bölümünde
-8. **Expression Evaluate**: Debug console'de yazarak değerleri kontrol et
 
-### Örnek Parçacıklar (v0.2.0 ile)
+#### Hızlı Başlat
+1. **Run and Debug Sekmesi**: `Ctrl+Shift+D` tuşlarına bas
+2. **Konfigürasyon Seç**: "SynScript: Mevcut Dosyayı Başlat" seç
+3. **Hata Ayıklamayı Başlat**: ▶️ yeşil buton'a tıkla veya `F5` tuşuna bas
+
+#### Breakpoint Ayarlama
+1. Sat\u0131r numaras\u0131n\u0131n solundaki kenara t\u0131kla (kırmızı nokta görüntülenir)
+2. Hata ayıklama devam ederken bu satırda durur
+
+#### Koşullu Breakpoint (Conditional Breakpoint)
+1. Sat\u0131r numaras\u0131n\u0131n üzerine sa\u011f t\u0131kla
+2. "Add Conditional Breakpoint" seç
+3. Ko\u015ful gir (örn: `count > 10`)
+4. Koşul sağlandığında durur
+
+#### Logpoint (Log Yaz)
+1. Sat\u0131r numaras\u0131n\u0131n üzerine sa\u011f t\u0131kla
+2. "Add Logpoint" seç
+3. Log mesaj\u0131 gir (örn: `Counter: {count}`)
+4. Çalıştırma durdulmadan console'a yazd\u0131r\u0131r
+
+#### Adım Adım Çalıştırma
+- **F10** veya **Step Over**: Bir sat\u0131r ilerle (fonksiyona girme)
+- **F11** veya **Step In**: Fonksiyona gir ve çalıştır
+- **Shift+F11** veya **Step Out**: Mevcut fonksiyondan çık
+- **F5** veya **Continue**: Sonraki breakpoint'e kadar çalıştır
+
+#### Değişkenleri İnceleme
+1. Debug panelinde (sol) "Variables" bölümüne bak
+2. Local, Global, Static değişkenleri göreceksin
+3. Değerleri genişlet ve basit değerler göster
+
+#### Watch Expression (İzle)
+1. Debug panelinde "Watch" bölümüne git
+2. + butonuna bas ve expression gir (örn: `myArray.length`)
+3. Her debug adımında otomatik güncellenir
+
+#### Debug Console
+1. Debug panelinde "Debug Console" sekmesine git
+2. JavaScript benzeri expression'lar yazabilirsin
+3. Hata ayıklanacak program'ın bağlamında değerlendirilir
+
+### Komutu Doğrudan Çalıştırma
+- **Ctrl+Shift+P** → "SynScript: Dosyayı Çalıştır" veya "SynScript: Hata Ayıklamayı Başlat"
+- Mevcut dosya otomatik olarak seçilir
+
+### Örnek Parçacıklar (v0.3.0 ile)
 
 | Parça | Komut | Açıklama |
 |---------|-------|----------|
@@ -84,7 +122,7 @@ npm install -g synscript-language-support
 | Timer | `timer` + Tab | Zamanlayıcı |
 | Print | `print` + Tab | Konsol çıktısı |
 
-## 🎯 v0.2.0 Desteklenen Söz Dizimi
+## 🎯 v0.3.0 Desteklenen Söz Dizimi
 
 | Kategori | Söz Dizimi |
 |----------|-----------|
@@ -110,6 +148,6 @@ Apache License 2.0 - © 2026 Synthesis Lab
 
 ---
 
-**Sürüm**: 0.3.0  
+**Sürüm**: 0.3.1  
 **Son Güncelleme**: 7 Mart 2026  
 **Yenilikler**: 🐛 Professional Debugger (DAP), 🎨 Duck Icon, 🌙 Dark Theme v2 (VS Code Dark uyumlu)

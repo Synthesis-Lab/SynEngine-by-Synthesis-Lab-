@@ -1,0 +1,78 @@
+# Version control
+.git
+.gitignore
+.gitattributes
+
+# Package management
+node_modules/
+package-lock.json
+npm-debug.log
+yarn.lock
+
+# Build & compilation
+dist/
+build/
+*.o
+*.a
+*.so
+*.dylib
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Documentation (large files)
+*.md
+CHANGELOG.md
+README.md
+LICENSE
+
+# Tests & Examples
+test/
+tests/
+__tests__/
+Examples/
+examples/
+
+# Miscellaneous
+.directory
+.env
+.env.local
+*.tmp
+*.bak
+
+# Grammar & Language Spec (optional - keep if needed)
+Grammar/
+LANGUAGE_SPEC.md
+StdLib/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+azure-pipelines.yml
+
+# Webpack/Build tools
+webpack.config.js
+tsconfig.json
+.eslintrc.json
+.prettierrc
+
+# Source maps
+*.map
+
+# Thumbnails & Cache
+.cache/
+.thumbnails/
+
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.rar
