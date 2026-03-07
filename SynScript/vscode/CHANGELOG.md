@@ -1,4 +1,12 @@
 # SynScript Language Support - Sürüm Geçmişi
+## [0.3.2] - 7 Mart 2026
+
+### ✨ Yeni Özellikler
+
+- **Tema Güncellemesi**
+  - 🌙 SynScript Lab Modern Dark - Profesyonel koyu modern tema eklendi
+  - ☀️ SynScript Lab Modern Light - Profesyonel açık modern tema eklendi
+  
 ## [0.3.1] - 7 Mart 2026
 
 ### ✨ Yeni Özellikler
@@ -95,11 +103,6 @@
   - `.vscodeignore` dosyası eklendi - Gereksiz dosyaları hariç tut
   - VSIX boyutunu %40 kadar azalt (800KB+ → 50-100KB hedefi)
   - Sadece gerekli dosyalar paketlenmesi
-
-- **Birçok Tema Desteği**
-  - 🌙 SynScript Lab Dark - VS Code Dark uyumlu profesyonel tema
-  - ☀️ SynScript Lab Light - Aydınlık tema game dev için
-  - Her iki tema da oyun geliştirme semantiğine optimize
 
 - **Geliştirilmiş Sözdizimi Vurgulaması**
   - v0.3.0 oyun semantiği (State, Signal, Actor)

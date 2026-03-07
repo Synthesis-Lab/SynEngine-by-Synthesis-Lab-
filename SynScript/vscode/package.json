@@ -2,7 +2,7 @@
   "name": "synscript-language-support",
   "displayName": "SynScript - Game Development Language",
   "description": "SynScript language support with syntax highlighting, dual themes, code snippets, linting, debugger, and @Operator namespaces for game development with Godot and Cocos2D",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "publisher": "SynthesisLab",
   "author": "Synthesis Lab",
   "main": "./extension.js",
@@ -46,14 +46,14 @@
     ],
     "themes": [
       {
-        "label": "SynScript Lab Dark",
+        "label": "SynScript Lab Modern Dark",
         "uiTheme": "vs-dark",
-        "path": "./themes/SynScript-Lab-Dark.json"
+        "path": "./themes/SynScript-Lab-Modern-Dark.json"
       },
       {
-        "label": "SynScript Lab Light",
+        "label": "SynScript Lab Modern Light",
         "uiTheme": "vs",
-        "path": "./themes/SynScript-Lab-Light.json"
+        "path": "./themes/SynScript-Lab-Modern-Light.json"
       }
     ],
     "commands": [

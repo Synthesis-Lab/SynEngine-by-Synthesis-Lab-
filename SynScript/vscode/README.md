@@ -14,21 +14,21 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# SynScript Language Support for VS Code (v0.3.1)
+# SynScript Language Support for VS Code (v0.3.2)
 
 VS Code'da SynScript (.syn) dosyaları için tam dil desteği ve hata ayıklama sağlayan profesyonel uzantı.
 
 ## 🎨 Özellikler
 
 ✅ **Syntax Highlighting** - SynScript syntax'ı renkle vurgular (State, Signal, @operators dahil)
-✅ **Professional Debugger** - DAP destekli breakpoint, stack trace, değişken denetimi (YENİ v0.3.0)
+✅ **Professional Debugger** - DAP destekli breakpoint, stack trace, değişken denetimi (YENİ v0.3.2)
 ✅ **State Machine Support** - `state` keyword'ü ve yaşam döngüsü (`on_enter`, `tick`, `on_exit`)
 ✅ **Signal/Slot Pattern** - `signal` tanımları ve `=>` operatörü
 ✅ **@Operator Namespace** - `@vector`, `@math`, `@native` operasyonları
 ✅ **Code Snippets** - Hızlı kod yazımı için 20+ önceden tanımlanmış parçacık
 ✅ **Language Configuration** - Otomatik girintilendirme, parantez eşleştirme
-✅ **Professional Icon** - Duck tasarımı kod emblemli (YENİ v0.3.0)
-✅ **Dark & Light Themes** - VS Code Dark uyumlu temalar (Güncellenmiş v0.3.0)
+✅ **Professional Icon** - Duck tasarımı kod emblemli (YENİ v0.3.2)
+✅ **Dark & Light Themes** - VS Code Dark uyumlu temalar (Güncellenmiş v0.3.2)
 ✅ **Actor Support** - Actor scope isolation ve message passing
 ✅ **Async/Await Ready** - `async`/`await` keyword desteği (transpilation)
 
@@ -37,7 +37,7 @@ VS Code'da SynScript (.syn) dosyaları için tam dil desteği ve hata ayıklama 
 ### Manuel Kurulum
 1. Bu dizini VS Code extensions klasörüne kopyala:
    ```bash
-   ~/.vscode/extensions/synscript-language-support-0.4.0/
+   ~/.vscode/extensions/synscript-language-support-0.3.2/
    ```
 
 2. VS Code'u yeniden başlat
@@ -54,7 +54,7 @@ npm install -g synscript-language-support
 2. VS Code otomatik olarak SynScript söz dizimini tanır
 3. Code parçacıklarını kullan (`Ctrl+Space` veya `Cmd+Space`)
 
-### Debugger Kullanımı (v0.3.0) - YENİ
+### Debugger Kullanımı (v0.3.2) - YENİ
 
 #### Hızlı Başlat
 1. **Run and Debug Sekmesi**: `Ctrl+Shift+D` tuşlarına bas
@@ -102,7 +102,7 @@ npm install -g synscript-language-support
 - **Ctrl+Shift+P** → "SynScript: Dosyayı Çalıştır" veya "SynScript: Hata Ayıklamayı Başlat"
 - Mevcut dosya otomatik olarak seçilir
 
-### Örnek Parçacıklar (v0.3.0 ile)
+### Örnek Parçacıklar (v0.3.2 ile)
 
 | Parça | Komut | Açıklama |
 |---------|-------|----------|
@@ -122,7 +122,7 @@ npm install -g synscript-language-support
 | Timer | `timer` + Tab | Zamanlayıcı |
 | Print | `print` + Tab | Konsol çıktısı |
 
-## 🎯 v0.3.0 Desteklenen Söz Dizimi
+## 🎯 v0.3.2 Desteklenen Söz Dizimi
 
 | Kategori | Söz Dizimi |
 |----------|-----------|
@@ -148,6 +148,8 @@ Apache License 2.0 - © 2026 Synthesis Lab
 
 ---
 
-**Sürüm**: 0.3.1  
+**Sürüm**: 0.3.2  
 **Son Güncelleme**: 7 Mart 2026  
-**Yenilikler**: 🐛 Professional Debugger (DAP), 🎨 Duck Icon, 🌙 Dark Theme v2 (VS Code Dark uyumlu)
+**Yenilikler**: - **Tema Güncellemesi**
+                - 🌙 SynScript Lab Modern Dark - Profesyonel koyu modern tema eklendi
+                - ☀️ SynScript Lab Modern Light - Profesyonel açık modern tema eklendi

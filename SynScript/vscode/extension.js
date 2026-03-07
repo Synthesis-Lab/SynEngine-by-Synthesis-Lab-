@@ -11,7 +11,7 @@ let extensionContext;
 function activate(context) {
   extensionContext = context;
   
-  console.log('SynScript Language Support v0.3.0 activated');
+  console.log('SynScript Language Support v0.3.2 activated');
 
   // Command: Start Debugging
   let debugCommand = vscode.commands.registerCommand('synscript.debug.start', async () => {
@@ -98,7 +98,7 @@ function activate(context) {
   context.subscriptions.push(stopCommand);
 
   // Show quick info message
-  vscode.window.showInformationMessage('SynScript v0.3.0 ready! Use F5 to start debugging or click Run button');
+  vscode.window.showInformationMessage('SynScript v0.3.2 ready! Use F5 to start debugging or click Run button');
 }
 
 /**

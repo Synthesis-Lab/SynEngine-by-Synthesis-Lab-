@@ -1,0 +1,47 @@
+{
+  "name": "SynScript Lab Modern Dark",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#1f1f1f",
+    "editor.foreground": "#cccccc",
+    "editor.lineNumberColor": "#6e7681",
+    "editor.lineHighlightBackground": "#2e2e2e",
+    "editor.selectionBackground": "#264f78",
+    "activityBar.background": "#181818",
+    "activityBar.foreground": "#d7dae0",
+    "sideBar.background": "#181818",
+    "sideBar.foreground": "#cccccc",
+    "statusBar.background": "#181818",
+    "statusBar.foreground": "#cccccc",
+    "tab.activeBackground": "#1f1f1f",
+    "tab.inactiveBackground": "#181818",
+    "titleBar.activeBackground": "#181818"
+  },
+  "tokenColors": [
+    {
+      "name": "Keywords",
+      "scope": ["keyword", "storage.type"],
+      "settings": { "foreground": "#569cd6" }
+    },
+    {
+      "name": "SynScript: State & Actor",
+      "scope": ["keyword.declaration.state", "keyword.state", "keyword.declaration.actor"],
+      "settings": { "foreground": "#c586c0", "fontStyle": "bold" }
+    },
+    {
+      "name": "SynScript: Signal & Operators",
+      "scope": ["keyword.declaration.signal", "keyword.operator.at-namespace"],
+      "settings": { "foreground": "#4fc1ff" }
+    },
+    {
+      "name": "Functions",
+      "scope": ["entity.name.function"],
+      "settings": { "foreground": "#dcdcaa" }
+    },
+    {
+      "name": "Strings",
+      "scope": ["string"],
+      "settings": { "foreground": "#ce9178" }
+    }
+  ]
+}

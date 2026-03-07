@@ -1,0 +1,45 @@
+{
+  "name": "SynScript Lab Modern Light",
+  "type": "light",
+  "colors": {
+    "editor.background": "#ffffff",
+    "editor.foreground": "#3b3b3b",
+    "editor.lineNumberColor": "#a5a5a5",
+    "editor.lineHighlightBackground": "#f3f3f3",
+    "editor.selectionBackground": "#add6ff",
+    "activityBar.background": "#f8f8f8",
+    "activityBar.foreground": "#333333",
+    "sideBar.background": "#f8f8f8",
+    "statusBar.background": "#f8f8f8",
+    "statusBar.foreground": "#333333",
+    "tab.activeBackground": "#ffffff",
+    "tab.inactiveBackground": "#f8f8f8"
+  },
+  "tokenColors": [
+    {
+      "name": "Keywords",
+      "scope": ["keyword"],
+      "settings": { "foreground": "#af00db" }
+    },
+    {
+      "name": "SynScript: State & Actor",
+      "scope": ["keyword.declaration.state", "keyword.state", "keyword.declaration.actor"],
+      "settings": { "foreground": "#0000ff", "fontStyle": "bold" }
+    },
+    {
+      "name": "SynScript: @Operators",
+      "scope": ["keyword.operator.at-namespace", "keyword.operator.at-math"],
+      "settings": { "foreground": "#795e26" }
+    },
+    {
+      "name": "Functions",
+      "scope": ["entity.name.function"],
+      "settings": { "foreground": "#795e26" }
+    },
+    {
+      "name": "Comments",
+      "scope": ["comment"],
+      "settings": { "foreground": "#008000", "fontStyle": "italic" }
+    }
+  ]
+}
