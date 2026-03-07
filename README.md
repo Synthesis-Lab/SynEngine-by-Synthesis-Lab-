@@ -10,12 +10,13 @@
 
 | Aşama | Durum | İlerleme |
 |-------|-------|----------|
-| **Phase 1: SynScript Dili** | ✅ TAMAMLANDI | 100% |
+| **Phase 1: SynScript v0.2.0** | ✅ TAMAMLANDI | 100% |
 | **Phase 2: Godot Entegrasyonu** | ⏳ SIRADA | 0% |
 | **Phase 3: Phaser (Web)** | 🧊 PLANLANIYOR | 0% |
 | **Phase 4: IDE & Ekosistem** | 🧊 PLANLANIYOR | 0% |
 
-**Son Güncelleme**: 5 Mart 2026
+**Son Güncelleme**: 6 Mart 2026  
+**Sürüm**: v0.2.0 - State Machine, Signal/Slot, @Operators
 
 ---
 
@@ -23,6 +24,9 @@
 
 SynEngine, oyun geliştiricilerin **hızlı prototip yapması ve produktif olması** için tasarlanmış bir oyun motorudur. 
 
+- 🎮 **State Machine First**: Oyun mantığı için built-in State deseni
+- 📡 **Signal/Slot Events**: Deklaratif event binding (`=>` operatörü)
+- ⚡ **@Operator Namespace**: Performans kritik işlemler için native operators  
 - 🐍 **Python'un Kolaylığı**: SynScript dili Python-friendly
 - 💪 **C#'ın Gücü**: .NET 10.0 ile high-performance
 - 🎮 **Godot Desteği**: Desktop oyunları için
@@ -33,10 +37,41 @@ SynEngine, oyun geliştiricilerin **hızlı prototip yapması ve produktif olmas
 
 ## 🚀 Hızlı Başlangıç
 
-### Phase 1 (SynScript Dili) Özellikleri
+### Phase 1 v0.2.0 Özellikleri
 
 ```synscript
-# SynScript - Oyun geliştiriciler için Python-like dil
+# SynScript - Oyun geliştiriciler için Hibrid dil
+
+# ===== State Machine Pattern =====
+@export
+var current_state = "Idle"
+
+state Idle:
+    fn on_enter():
+        animation.play("idle_animation")
+    
+    fn tick(delta: float):
+        if input.is_pressed("attack"):
+            change_state("Attacking")
+    
+    fn on_exit():
+        animation.stop()
+
+state Attacking:
+    fn on_enter():
+        animation.play("attack_animation")
+        emit_signal("attack_started")
+    
+    fn tick(delta: float):
+        if animation.is_finished():
+            change_state("Idle")
+    
+    fn on_exit():
+        emit_signal("attack_finished")
+
+# ===== Signal/Slot Pattern =====
+signal health_changed(old_health: int, new_health: int)
+signal died
 
 @export
 var player_health = 100
@@ -44,10 +79,28 @@ var player_health = 100
 @export
 var player_speed = 150.0
 
+# ===== Event Binding (Signal/Slot) =====
+player.health_changed => ui.update_health_bar
+player.died => game_manager.end_level
+
+# ===== @Operator Namespace =====
+function calculate_distance(v1: Vector2, v2: Vector2) -> float:
+    # Standart (güvenli)
+    var slow_distance = (v1 - v2).length()
+    
+    # Native (hızlı)
+    var fast_distance = @vector.distance(v1, v2)
+    
+    return fast_distance
+
 function take_damage(damage: int):
+    var old_health = player_health
     player_health -= damage
+    emit_signal("health_changed", old_health, player_health)
+    
     if player_health <= 0:
-        print("Player died!")
+        emit_signal("died")
+```
 
 function move(direction: Vector2, delta: float):
     position = position + direction * player_speed * delta
@@ -157,7 +210,7 @@ dotnet run
 
 1. `SynScript/vscode/` klasörünü kopyala:
    ```bash
-   cp -r SynScript/vscode ~/.vscode/extensions/synscript-0.1.0/
+   cp -r SynScript/vscode ~/.vscode/extensions/synscript-0.2.0/
    ```
 
 2. VS Code'u yeniden başlat
@@ -179,31 +232,56 @@ dotnet run
 
 ## 💡 Özellikler
 
-### Phase 1 ✅ (TAMAMLANDI)
-- ✅ SynScript dili (gramer, transpiler)
-- ✅ Standart kütüphane (40+ fonksiyon)
-- ✅ Error handling
+### Phase 1 v0.2.0 ✅ (TAMAMLANDI)
+
+#### Core Language Features
+- ✅ SynScript dili (ANTLR 4 gramer, transpiler)
+- ✅ **🎮 State Machine Pattern** (built-in `state` keyword)
+- ✅ **📡 Signal/Slot Event System** (`signal`, `=>` operatörü)
+- ✅ **⚡ @Operator Namespace** (`@vector`, `@math`, `@native`, `@color`)
+- ✅ **🏛️ Actor Scope Isolation** (message passing, security)
+- ✅ **⏳ Async/Await Support** (JavaScript-style non-blocking)
+- ✅ **Optional Typing** (static analysis + duck typing)
+
+#### Standard Library Features
+- ✅ SynMath: 15+ matematiksel fonksiyon (sin, cos, clamp, lerp, vb.)
+- ✅ SynColor: RGBA renk sınıfı ve 8 statik renk
+- ✅ SynVector: Vector2/Vector3 operatörleriyle
+- ✅ SynTimer: Tek sefer ve tekrarlayan zamanlayıcılar
+- ✅ **State** (v0.2): Oyun durumu yönetimi
+- ✅ **Signal** (v0.2): Event tetikleme ve alma
+- ✅ **Actor** (v0.2): Oyun nesnesi temel sınıfı
+- ✅ **TypeInference** (v0.2): Dinamik/statik tip kontrolü
+
+#### Developer Experience
 - ✅ VS Code syntax highlighting
-- ✅ 15+ Code snippets
+- ✅ **20+ Code snippets** (variable, function, state, signal, actor, @vector, vb.)
+- ✅ Error handling ve detailed error messages
+- ✅ Language configuration (brackets, indentation)
+- ✅ **v0.2 Theme support** (Lab themed colors)
+- ✅ **v0.2 Semantic highlighting** (State/Signal/Actor renklendirilmesi)
 
 ### Phase 2 ⏳ (SIRADA)
 - ⏳ Godot entegrasyonu
 - ⏳ Python.NET bellek içi köprüsü
-- ⏳ SynActor sarmalayıcısı
-- ⏳ Sinyal eşlemesi
+- ⏳ SynActor sarmalayıcısı (Godot Node2D/Node3D)
+- ⏳ Sinyal eşlemesi (SynScript Signal → Godot signals)
 - ⏳ Inspector entegrasyonu
+- ⏳ Real-time preview
 
 ### Phase 3 🧊 (PLANLANIYOR)
 - 🧊 Phaser (Web) entegrasyonu
 - 🧊 Brython/Pyodide çalışma ortamı
 - 🧊 JavaScript transpiler
 - 🧊 Web varlık yönetimi
+- 🧊 Browser debugging
 
 ### Phase 4 🧊 (PLANLANIYOR)
 - 🧊 Language Server Protocol (LSP)
 - 🧊 Görsel betik editörü
-- 🧊 Paket yöneticisi
+- 🧊 Paket yöneticisi (SynPackage)
 - 🧊 Topluluk pazarı
+- 🧊 AI-assisted code generation
 
 ---
 

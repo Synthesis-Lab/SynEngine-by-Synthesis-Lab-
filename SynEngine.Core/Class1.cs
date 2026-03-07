@@ -54,6 +54,36 @@ public class SynScriptTranspiler
         pythonCode = Regex.Replace(pythonCode, @"@process\s*", "# __process__\n");
         pythonCode = Regex.Replace(pythonCode, @"@signal\s*", "# __signal__\n");
 
+        // v0.2.0 State Machine blocks
+        // state Name: -> class Name(State):
+        pythonCode = Regex.Replace(pythonCode, @"\bstate\s+([A-Za-z_][A-Za-z0-9_]*)\s*:", "class $1(State):");
+        
+        // fn on_enter/tick/on_exit -> def with proper indentation
+        pythonCode = Regex.Replace(pythonCode, @"\bfn\s+on_enter\s*\(\)\s*:", "    def on_enter(self):");
+        pythonCode = Regex.Replace(pythonCode, @"\bfn\s+tick\s*\(\s*delta\s*:\s*float\s*\)\s*:", "    def tick(self, delta: float):");
+        pythonCode = Regex.Replace(pythonCode, @"\bfn\s+on_exit\s*\(\)\s*:", "    def on_exit(self):");
+        
+        // v0.2.0 Signal declarations
+        // signal name(param: type) -> name = Signal()
+        pythonCode = Regex.Replace(pythonCode, @"\bsignal\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\([^)]*\)", "$1 = Signal('$1')");
+        
+        // v0.2.0 Signal binding: source => target.method -> source.connect(target.method)
+        pythonCode = Regex.Replace(pythonCode, @"([a-zA-Z_][a-zA-Z0-9_]*)\s*=>\s*([a-zA-Z_][a-zA-Z0-9_]*\.[a-zA-Z_][a-zA-Z0-9_]*)", "$1.connect($2)");
+        
+        // v0.2.0 @operator namespace
+        // @vector.add(v1, v2) -> native_vector_add(v1, v2)
+        pythonCode = Regex.Replace(pythonCode, @"@vector\.add\s*\(", "native_vector_add(");
+        pythonCode = Regex.Replace(pythonCode, @"@vector\.subtract\s*\(", "native_vector_subtract(");
+        pythonCode = Regex.Replace(pythonCode, @"@vector\.multiply\s*\(", "native_vector_multiply(");
+        pythonCode = Regex.Replace(pythonCode, @"@vector\.normalize\s*\(", "native_vector_normalize(");
+        pythonCode = Regex.Replace(pythonCode, @"@vector\.distance\s*\(", "native_vector_distance(");
+        
+        // @math operations
+        pythonCode = Regex.Replace(pythonCode, @"@math\.sin\s*\(", "native_math_sin(");
+        pythonCode = Regex.Replace(pythonCode, @"@math\.cos\s*\(", "native_math_cos(");
+        pythonCode = Regex.Replace(pythonCode, @"@math\.sqrt\s*\(", "native_math_sqrt(");
+        pythonCode = Regex.Replace(pythonCode, @"@math\.pow\s*\(", "native_math_pow(");
+
         // Tip annotations'ı Python stili'ne çevir
         // var x: int -> x: int
         pythonCode = Regex.Replace(pythonCode, @"\bvar\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*:\s*", "$1: ");
@@ -124,17 +154,24 @@ public class SynScriptTranspiler
     
     private string GenerateStdLibImports()
     {
-        return "# ===== SynScript StdLib Imports =====\n" +
+        return "# ===== SynScript StdLib Imports (v0.2.0) =====\n" +
                "from sys import path as _sys_path\n" +
                "from os import path as _os_path\n" +
                "_lib_path = _os_path.join(_os_path.dirname(__file__), '../../SynScript/StdLib')\n" +
                "if _lib_path not in _sys_path:\n" +
                "    _sys_path.insert(0, _lib_path)\n" +
                "\n" +
+               "# v0.1 Modules\n" +
                "from synmath import SynMath\n" +
                "from syncolor import SynColor\n" +
                "from syntimer import SynTimer, DeltaTimer\n" +
                "from synvector import Vector2, Vector3\n" +
+               "\n" +
+               "# v0.2 State Machine & Event System\n" +
+               "from synstate import State\n" +
+               "from synsignal import Signal\n" +
+               "from synactor import Actor\n" +
+               "from syntyping import TypeInference\n" +
                "\n" +
                "class Input:\n" +
                "    @staticmethod\n" +
@@ -145,7 +182,7 @@ public class SynScriptTranspiler
                "    def is_action_released(action: str) -> bool:\n" +
                "        return False\n" +
                "\n" +
-               "# ===== End StdLib Imports =====\n\n";
+               "# ===== End StdLib Imports (v0.2.0) =====\n\n";
     }
 }
 

@@ -1,8 +1,8 @@
 {
   "name": "synscript-language-support",
   "displayName": "SynScript Language Support",
-  "description": "Syntax highlighting and language support for SynScript (.syn) files",
-  "version": "0.1.0",
+  "description": "Syntax highlighting and language support for SynScript (.syn) files with State Machine, Signal/Slot events, and @Operator namespaces",
+  "version": "0.2.0",
   "publisher": "synthesis-lab",
   "license": "Apache-2.0",
   "engines": {
@@ -36,6 +36,13 @@
       {
         "language": "synscript",
         "path": "./snippets/synscript.json"
+      }
+    ],
+    "themes": [
+      {
+        "label": "SynScript Lab Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/SynScript-Lab-Dark.json"
       }
     ]
   },

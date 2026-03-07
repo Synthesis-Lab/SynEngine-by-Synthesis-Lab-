@@ -14,23 +14,27 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# SynScript Language Support for VS Code
+# SynScript Language Support for VS Code (v0.2.0)
 
 VS Code'da SynScript (.syn) dosyaları için tam dil desteği sağlayan extension.
 
 ## 🎨 Özellikler
 
-✅ **Syntax Highlighting** - SynScript syntax'ı renkle vurgular
-✅ **Code Snippets** - Hızlı kod yazımı için önceden tanımlanmış parçacıklar  
+✅ **Syntax Highlighting** - SynScript syntax'ı renkle vurgular (State, Signal, @operators dahil)
+✅ **State Machine Support** - `state` keyword'ü ve yaşam döngüsü (`on_enter`, `tick`, `on_exit`)
+✅ **Signal/Slot Pattern** - `signal` tanımları ve `=>` operatörü
+✅ **@Operator Namespace** - `@vector`, `@math`, `@native` operasyonları
+✅ **Code Snippets** - Hızlı kod yazımı için 20+ önceden tanımlanmış parçacık
 ✅ **Language Configuration** - Otomatik girintilendirme, parantez eşleştirme
-✅ **IntelliSense Hazırlanması** - Gelecek sürümde kod tamamlama
+✅ **Actor Support** - Actor scope isolation ve message passing
+✅ **Async/Await Ready** - `async`/`await` keyword desteği (transpilation)
 
 ## 📦 Kurulum
 
 ### Manual Installation
 1. Bu dizini VS Code extensions klasörüne kopyala:
    ```bash
-   ~/.vscode/extensions/synscript-language-support-0.1.0/
+   ~/.vscode/extensions/synscript-language-support-0.2.0/
    ```
 
 2. VS Code'u yeniden başlat
@@ -46,25 +50,41 @@ npm install -g synscript-language-support
 2. VS Code otomatik olarak SynScript syntax'ını tanır
 3. Code snippets'i kullan (`Ctrl+Space` veya `Cmd+Space`)
 
-### Örnek Snippets
+### Örnek Snippets (v0.2.0 ile)
 
-| Snippet | Komut |
-|---------|-------|
-| Variable | `var` + Tab |
-| Function | `func` + Tab |
-| If-Else | `ifelse` + Tab |
-| For Loop | `for` + Tab |
-| Vector2 | `vec2` + Tab |
-| Timer | `timer` + Tab |
+| Snippet | Komut | Açıklama |
+|---------|-------|----------|
+| Variable | `var` + Tab | Değişken tanımla |
+| Function | `func` + Tab | Fonksiyon tanımla |
+| If-Else | `ifelse` + Tab | Koşullu blok |
+| For Loop | `for` + Tab | Döngü |
+| **State Block** | **`state` + Tab** | **State Machine (YENİ)** |
+| **Signal** | **`signal` + Tab** | **Event isteyen tanımla (YENİ)** |
+| **Signal Binding** | **`=>` + Tab** | **Signal bağlantısı (YENİ)** |
+| **Actor** | **`actor` + Tab** | **Actor scope isolation (YENİ)** |
+| **@Vector Operator** | **`@vector` + Tab** | **Vektor hızlanması (YENİ)** |
+| **@Math Operator** | **`@math` + Tab** | **Matematik hızlanması (YENİ)** |
+| Vector2 | `vec2` + Tab | 2D Vektör |
+| Vector3 | `vec3` + Tab | 3D Vektör |
+| Color | `color` + Tab | Renk |
+| Timer | `timer` + Tab | Zamanlayıcı |
+| Print | `print` + Tab | Konsol çıktısı |
 
-## 🎯 Desteklenen Söz Dizimi
+## 🎯 v0.2.0 Desteklenen Söz Dizimi
 
-- **Değişkenler**: `var`, `var x: type`, `var x = value`
-- **Fonksiyonlar**: `function name() -> type:`
-- **Dekoratörler**: `@export`, `@on_ready`, `@process`, `@signal`
-- **Kontrol Akışı**: `if`, `elif`, `else`, `for`, `while`, `break`, `continue`, `return`
-- **Tipler**: `int`, `float`, `string`, `bool`, `Vector2`, `Vector3`, `Color`
-- **StdLib**: `SynMath`, `SynColor`, `SynTimer`, `DeltaTimer`, `Vector2`, `Vector3`, `Input`
+| Kategori | Söz Dizimi |
+|----------|-----------|
+| **Değişkenler** | `var`, `var x: type`, `var x = value` |
+| **Fonksiyonlar** | `function name() -> type:` |
+| **State Machine** | `state Angry:` → `on_enter()`, `tick(delta)`, `on_exit()` |
+| **Signal/Slot** | `signal event(params)` / `source => target` |
+| **Dekoratörler** | `@export`, `@on_ready`, `@process`, `@signal` |
+| **@Operators** | `@vector.*`, `@math.*`, `@native.*`, `@color.*` |
+| **Async** | `async`, `await` (transpilation desteği) |
+| **Kontrol Akışı** | `if`, `elif`, `else`, `for`, `while`, `break`, `continue`, `return` |
+| **Tipler** | `int`, `float`, `string`, `bool`, `Vector2`, `Vector3`, `Color` |
+| **StdLib** | `SynMath`, `SynColor`, `SynTimer`, `DeltaTimer`, `Vector2`, `Vector3`, `Input`, `State`, `Signal`, `Actor`, `TypeInference` |
+| **Operatörler** | `+`, `-`, `*`, `/`, `%`, `**`, `==`, `!=`, `<`, `>`, `<=`, `>=`, `=>`, `and`, `or`, `not` |
 
 ## 🐛 Hatalar Bildir
 
@@ -76,5 +96,6 @@ Apache License 2.0 - © 2026 Synthesis Lab
 
 ---
 
-**Sürüm**: 0.1.0  
-**Son Güncelleme**: 6 Mart 2026
+**Sürüm**: 0.2.0  
+**Son Güncelleme**: 6 Mart 2026  
+**Yenilikler**: State Machine, Signal/Slot (=>), @Operators, Actor Isolation, Async/Await desteği

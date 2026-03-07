@@ -14,10 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# SynScript Language Specification v0.1
+# SynScript Language Specification v0.2.0
 
 ## 🎯 Özet
-SynScript, oyun geliştirme için tasarlanmış **Python-tabanlı** fakat **Python'dan bağımsız söz dizimi** (syntax) kullanmayan bir betik dilidir. C#/.NET tarafından transpile edilerek Python runtime'ında çalışır.
+SynScript, oyun geliştirme için tasarlanmış **Hibrid Laboratuvar** ürünüdür. Python'un okunabilirliğini ve JavaScript'in asenkron gücünü oyun pratiğine katarak, **State Machine**, **Signal/Slot pattern** ve **Native Operator** desteği ile inşa edilmiş modern bir betik dilidir.
+
+**Miraslar:**
+- 🐍 **Python**: Temiz indentation, list comprehensions, okunabilir operatörler (and/or/not)
+- 📜 **JavaScript**: Async/await, JSON esnekliği, event-driven mimarisi
+- ✨ **SynScript**: Built-in State Machine, @native operators, Signal/Slot pattern, Actor isolation
 
 ---
 
@@ -211,10 +216,243 @@ SyntaxError at line 5: Unmatched closing parenthesis
 
 ---
 
+## 🎮 State Machine Mimarisi (v0.2.0)
+
+SynScript, State Machine'i **birinci sınıf dil yapısı** olarak sunar:
+
+### **State Tanımı**
+
+```synscript
+state Angry:
+    fn on_enter():
+        print("DÜŞMAN KIZDI!")
+        animation.play("angry_idle")
+    
+    fn tick(delta: float):
+        var distance_to_player = position.distance_to(player.position)
+        if distance_to_player < 50:
+            attack_player()
+        else:
+            chase_player()
+    
+    fn on_exit():
+        print("Düşman sakinleşti.")
+        animation.stop()
+
+state Calm:
+    fn on_enter():
+        animation.play("idle")
+        patrol_timer.start()
+    
+    fn tick(delta: float):
+        patrol()
+
+state Dead:
+    fn on_enter():
+        animation.play("death")
+        emit_signal("enemy_died", experience_reward)
+    
+    fn tick(delta: float):
+        pass
+```
+
+### **State Döngüsü**
+
+Her state şu yaşam döngüsünü izler:
+
+```
+[Other State] → on_exit() → [New State] → on_enter() → tick(delta) → tick(delta) → ...
+```
+
+### **State Geçişleri**
+
+State'ler **Signal** aracılığıyla geçiş yapar (aşağıya bakın).
+
+---
+
+## ⚡ @Operator Namespace (v0.2.0)
+
+Performans özellikleri için **yerli kesinlikle derlenmiş operasyonlar**:
+
+```synscript
+var v1 = Vector2(1, 2)
+var v2 = Vector2(3, 4)
+
+// Standart Phyton-stili (varsayılan, güvenli)
+var sum = v1 + v2
+
+// @Operator ile (hızlı, doğrudan C++ çağrısı)
+var sum_fast = @vector.add(v1, v2)
+
+// Diğer @operators
+var distance = @vector.distance(v1, v2)
+var normalized = @vector.normalize(v1)
+var angle = @math.atan2(dy, dx)
+var sin_fast = @math.sin(angle)
+```
+
+### **@Operator Kategorileri**
+
+| Namespace | Operasyonlar | Kullanım |
+|-----------|-------------|----------|
+| `@vector` | add, subtract, multiply, normalize, distance, dot, cross | Vektör matematiği |
+| `@math` | sin, cos, tan, sqrt, pow, clamp, lerp | Skalar matematiği |
+| `@native` | custom_c_functions | C++ entegrasyonu |
+| `@color` | blend, brighten, desaturate | Renk işlemleri |
+
+---
+
+## 📡 Signal/Slot Event System (v0.2.0)
+
+Game event'leri için **deklaratif event binding**:
+
+### **Signal Tanımı**
+
+```synscript
+signal health_changed(old_value: int, new_value: int)
+signal died(killer: string)
+signal reached_checkpoint(checkpoint_id: int)
+```
+
+### **Signal Emit (Tetikle)**
+
+```synscript
+fn take_damage(amount: int):
+    var old_hp = health
+    health -= amount
+    
+    # Signal tetikleme
+    emit_signal("health_changed", old_hp, health)
+    
+    if health <= 0:
+        emit_signal("died", "Enemy Attack")
+```
+
+### **Signal Binding (`=>` operatörü)**
+
+```synscript
+# UI'yı sağlıkla otomatik senkronize et
+player.health_changed => health_bar.update_value
+
+# Ses efekti oynat
+player.died => audio_manager.play_death_sound
+
+# Reboot tetikle
+player.reached_checkpoint => restart_timer.start
+```
+
+### **Avantajları**
+
+- ✅ Callback cehennemini önler (no nested callbacks)
+- ✅ Deklaratif bağlantı (kod okunabilirliği)
+- ✅ Dinamik bağlantı (runtime'da additive events)
+- ✅ Type-safe (aktör kapsamında scope isolation)
+
+---
+
+## 🏛️ Actor Scope Isolation (v0.2.0)
+
+Her oyun nesnesi (actor), kendi **izole ad alanında** (actor scope) yaşar:
+
+```synscript
+actor PlayerCharacter:
+    # Oyuncu-özel değişkenler (diğer actor'lar okunamaz)
+    var position: Vector2 = Vector2(0, 0)
+    var health: int = 100
+    var inventory = []
+
+    # Oyuncu-özel state'ler
+    state Running:
+        fn tick(delta: float):
+            move_by_input()
+    
+    state Jumping:
+        fn tick(delta: float):
+            apply_gravity(delta)
+    
+    # Mesaj geçişi ile iletişim
+    signal jump_requested
+    
+    fn request_jump():
+        emit_signal("jump_requested")
+
+actor Enemy:
+    var position: Vector2 = Vector2(100, 100)
+    var target: Actor = null  # Reference geçişi
+
+    state Hunting:
+        fn tick(delta: float):
+            if target:
+                move_toward(target.position)
+
+# Scope dışında erişim başarısız olur
+print(player.position)      # ✅ Çalışır
+print(enemy.position)       # ✅ Çalışır
+print(inventory)            # ❌ HATA! (global scope yok)
+```
+
+### **Message Passing (Signal Aracılığıyla)**
+
+```synscript
+# Player durumunu diğer actor'lar bilmez, sadece signal alır
+player.health_changed => ui.update_health_bar
+player.died => game_manager.end_level
+```
+
+---
+
+## ⏳ Async/Await Patterns (v0.2.0)
+
+Bloke olmayan animasyonlar ve network işlemleri:
+
+```synscript
+# Bir animasyonun bitişini bekle
+fn play_attack_animation():
+    animation.play("sword_swing")
+    await animation.finished()
+    print("Animasyon bitti!")
+
+# Zaman tabanlı gecikme
+fn teleport_with_effect():
+    emit_signal("teleport_requested")
+    await timer.wait_seconds(1.0)
+    position = target_position
+    emit_signal("teleport_complete")
+
+# Parallel await (çoklu operasyonları bekle)
+fn load_level():
+    var assets = await asset_loader.load_textures()
+    var music = await audio_manager.load_music()
+    # İkisi de bitene kadar devam etmez
+    start_level()
+```
+
+### **Transpile Edilen Python**
+
+```python
+async def play_attack_animation():
+    animation.play("sword_swing")
+    await animation.finished()
+    print("Animasyon bitti!")
+
+async def teleport_with_effect():
+    emit_signal("teleport_requested")
+    await asyncio.sleep(1.0)
+    position = target_position
+    emit_signal("teleport_complete")
+```
+
+---
+
 ## 🚀 Çalışma Şekli
 
 1. **Dosya Okuma**: `.syn` dosyası C# tarafından okunur
 2. **Dönüştürüm**: `SynScriptTranspiler` SynScript → Python dönüştürür
+   - State blocks → Python classes (State inheritance)
+   - Signal declarations → Signal objects
+   - Actor definitions → Actor class inheritance
+   - @operators → Native function calls
+   - async/await → asyncio syntax
 3. **Validation**: Yapısal hatalar kontrol edilir
 4. **Yürütme**: Python kodu `/usr/bin/python3` ile çalıştırılır
 5. **Sonuç**: Çıktı C# tarafından alınır ve işlenir
@@ -233,9 +471,11 @@ SyntaxError at line 5: Unmatched closing parenthesis
 ---
 
 ## 📝 Lisans
-MIT License - Synthesis Lab tarafından
+Apache License 2.0 - Synthesis Lab tarafından
 
 ---
 
 ## 👥 Katkıcılar
 - **Synthesis Lab Team**: Tasarım ve geliştirme
+- **v0.1.0**: Temel dil ve transpiler
+- **v0.2.0**: State Machine, Signal/Slot, @operators, async/await

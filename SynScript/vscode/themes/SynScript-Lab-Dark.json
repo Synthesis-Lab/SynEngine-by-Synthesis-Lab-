@@ -1,0 +1,240 @@
+{
+  "name": "SynScript Lab Dark",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#0f1419",
+    "editor.foreground": "#e8eaed",
+    "editor.lineNumberColor": "#464b57",
+    "editor.lineHighlightBackground": "#202530",
+    "editor.selectionBackground": "#2e475a",
+    "editor.findMatchBackground": "#4a5f6f",
+    "editor.findMatchHighlightBackground": "#3d5a6f",
+    "editorCursor.foreground": "#64b5f6",
+    "editorWhitespace.foreground": "#3a3f4b",
+    "editorBracketMatch.background": "#1e3a5f",
+    "editorBracketMatch.border": "#64b5f6",
+    
+    "editorError.foreground": "#ef5350",
+    "editorWarning.foreground": "#ffb74d",
+    "editorInfo.foreground": "#64b5f6",
+    
+    "activityBar.background": "#0f1419",
+    "activityBar.foreground": "#8fa3b0",
+    "activityBarBadge.background": "#ff6b6b",
+    "activityBarBadge.foreground": "#ffffff",
+    
+    "sideBar.background": "#151b24",
+    "sideBar.foreground": "#e8eaed",
+    "sideBarTitle.foreground": "#64b5f6",
+    
+    "list.hoverBackground": "#202530",
+    "list.activeSelectionBackground": "#2e475a",
+    
+    "statusBar.background": "#0f1419",
+    "statusBar.foreground": "#8fa3b0",
+    "statusBar.debuggingBackground": "#1a3f4f",
+    "statusBar.debuggingForeground": "#64b5f6",
+    
+    "tab.activeBackground": "#151b24",
+    "tab.activeForeground": "#64b5f6",
+    "tab.inactiveBackground": "#0f1419",
+    "tab.inactiveForeground": "#8fa3b0",
+    
+    "input.background": "#1f2530",
+    "input.foreground": "#e8eaed",
+    "input.border": "#3a3f4b",
+    
+    "button.background": "#4a7adb",
+    "button.foreground": "#ffffff",
+    "button.hoverBackground": "#5a8adb",
+    
+    "terminal.background": "#0f1419",
+    "terminal.foreground": "#e8eaed",
+    "terminal.ansiBlack": "#0f1419",
+    "terminal.ansiRed": "#ef5350",
+    "terminal.ansiGreen": "#66bb6a",
+    "terminal.ansiYellow": "#ffb74d",
+    "terminal.ansiBlue": "#64b5f6",
+    "terminal.ansiMagenta": "#ba68c8",
+    "terminal.ansiCyan": "#4dd0e1",
+    "terminal.ansiWhite": "#e8eaed"
+  },
+  "tokenColors": [
+    {
+      "name": "Comments",
+      "scope": ["comment"],
+      "settings": {
+        "foreground": "#546e7a",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Strings",
+      "scope": ["string"],
+      "settings": {
+        "foreground": "#81c784"
+      }
+    },
+    {
+      "name": "String Escape",
+      "scope": ["string constant.character.escape"],
+      "settings": {
+        "foreground": "#64b5f6"
+      }
+    },
+    {
+      "name": "Numbers",
+      "scope": ["constant.numeric"],
+      "settings": {
+        "foreground": "#ce93d8"
+      }
+    },
+    {
+      "name": "Built-in Constants",
+      "scope": ["constant.language"],
+      "settings": {
+        "foreground": "#ce93d8",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Keywords",
+      "scope": ["keyword"],
+      "settings": {
+        "foreground": "#ff7043",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Control Flow Keywords",
+      "scope": ["keyword.control"],
+      "settings": {
+        "foreground": "#ff9800",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Functions",
+      "scope": ["entity.name.function"],
+      "settings": {
+        "foreground": "#64b5f6",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Variables",
+      "scope": ["variable"],
+      "settings": {
+        "foreground": "#e8eaed"
+      }
+    },
+    {
+      "name": "Support Classes/Types",
+      "scope": ["support.class", "support.type"],
+      "settings": {
+        "foreground": "#4fc3f7",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "v0.2: State Keyword",
+      "scope": ["keyword.declaration.state", "keyword.state"],
+      "settings": {
+        "foreground": "#a78bfa",
+        "fontStyle": "bold italic"
+      }
+    },
+    {
+      "name": "v0.2: Signal Keyword",
+      "scope": ["keyword.declaration.signal", "keyword.signal"],
+      "settings": {
+        "foreground": "#06b6d4",
+        "fontStyle": "bold italic"
+      }
+    },
+    {
+      "name": "v0.2: Actor Keyword",
+      "scope": ["keyword.declaration.actor", "keyword.actor"],
+      "settings": {
+        "foreground": "#10b981",
+        "fontStyle": "bold italic"
+      }
+    },
+    {
+      "name": "v0.2: Async/Await Keywords",
+      "scope": ["keyword.async", "keyword.await"],
+      "settings": {
+        "foreground": "#f59e0b",
+        "fontStyle": "bold italic"
+      }
+    },
+    {
+      "name": "v0.2: Signal Binding Operator (=>)",
+      "scope": ["keyword.operator.signal"],
+      "settings": {
+        "foreground": "#06b6d4",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "v0.2: @Operator Namespace",
+      "scope": ["entity.name.operator"],
+      "settings": {
+        "foreground": "#fbbf24",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "v0.2: @Operator Methods",
+      "scope": ["entity.name.operator.method"],
+      "settings": {
+        "foreground": "#fbbf24",
+        "fontStyle": ""
+      }
+    },
+    {
+      "name": "Decorators",
+      "scope": ["entity.name.decorator"],
+      "settings": {
+        "foreground": "#ef5350",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Operators",
+      "scope": ["keyword.operator"],
+      "settings": {
+        "foreground": "#64b5f6"
+      }
+    },
+    {
+      "name": "Punctuation",
+      "scope": ["punctuation"],
+      "settings": {
+        "foreground": "#90caf9"
+      }
+    },
+    {
+      "name": "Invalid",
+      "scope": ["invalid"],
+      "settings": {
+        "foreground": "#ffcdd2",
+        "background": "#b71c1c"
+      }
+    },
+    {
+      "name": "v0.2: State Block Context",
+      "scope": ["meta.block.state"],
+      "settings": {
+        "background": "#1f2a3f"
+      }
+    },
+    {
+      "name": "v0.2: Actor Block Context",
+      "scope": ["meta.block.actor"],
+      "settings": {
+        "background": "#1f3a2f"
+      }
+    }
+  ]
+}

@@ -18,7 +18,15 @@
 grammar SynScript;
 
 // ========== PROGRAM STRUCTURE ==========
-program: (statement | functionDecl | varDecl)* EOF;
+program
+    : (statement 
+     | functionDecl 
+     | varDecl 
+     | stateDecl       // v0.2: State Machine block
+     | signalDecl      // v0.2: Signal/Slot event
+     | actorDecl)      // v0.2: Actor scope isolation
+    * EOF
+    ;
 
 // ========== STATEMENTS ==========
 statement
@@ -30,9 +38,11 @@ statement
     | returnStmt
     | breakStmt
     | continueStmt
+    | asyncStmt       // v0.2: Async/await support
     ;
 
 expressionStmt: expression NEWLINE?;
+asyncStmt: 'async' statement;  // v0.2: async fn _process(): ...
 block: INDENT statement* DEDENT;
 
 // ========== CONTROL FLOW ==========
@@ -45,17 +55,49 @@ breakStmt: 'break' NEWLINE?;
 continueStmt: 'continue' NEWLINE?;
 
 // ========== FUNCTION DECLARATION ==========
-functionDecl: decorator* 'function' ID '(' paramList? ')' ':' NEWLINE block;
-paramList: ID (',' ID)*;
-decorator: '@' ID;
+functionDecl: decorator* 'function' ID '(' paramList? ')' (':' type)? ':' NEWLINE block;
+paramList: ID (':' type)? (',' ID (':' type)?)*;
+decorator: '@' (ID | operatorDecorator);        // v0.2: @operator support
+
+// v0.2 DECORATORS & OPERATORS ==========
+operatorDecorator: 'vector' | 'math' | 'native' | 'color' | 'export' | 'on_ready' | 'process' | 'signal';
+
+// ========== v0.2 STATE MACHINE BLOCKS ==========
+stateDecl: 'state' ID ':' NEWLINE block;  // State sınıfı deklarasyonu
+// State içinde on_enter(), tick(delta), on_exit() methodları var
+
+// ========== v0.2 SIGNAL DECLARATIONS ==========
+signalDecl: 'signal' ID '(' signalParamList? ')' NEWLINE?;
+signalParamList: ID ':' type (',' ID ':' type)*;
+
+// ========== v0.2 ACTOR SCOPE ISOLATION ==========
+actorDecl: 'actor' ID ':' NEWLINE block;  // Actor sınıfı deklarasyonu (scope isolation)
 
 // ========== VARIABLE DECLARATION ==========
 varDecl: 'var' ID (':' type)? ('=' expression)? NEWLINE?;
-type: 'int' | 'float' | 'string' | 'bool' | 'Vector2' | 'Vector3' | 'Color';
+type: 'int' 
+    | 'float' 
+    | 'string' 
+    | 'bool' 
+    | 'Vector2' 
+    | 'Vector3' 
+    | 'Color'
+    | 'State'         // v0.2: State machine type
+    | 'Signal'        // v0.2: Event signal type
+    | 'Actor'         // v0.2: Game object type
+    | 'Dict'          // Dictionary/map type
+    | 'List'          // Array/list type
+    | ID              // Custom types
+    ;
 
 // ========== EXPRESSIONS ==========
 expression
-    : assignment
+    : signalBinding
+    ;
+
+// v0.2: Signal binding (source => target)
+signalBinding
+    : assignment ('=>' assignment)*
     ;
 
 assignment
@@ -106,16 +148,25 @@ postfixOp
     ;
 
 primary
-    : NUMBER                      # NumberLiteral
-    | STRING                      # StringLiteral
-    | 'true'                      # BoolLiteral
-    | 'false'                     # BoolLiteral
-    | ID                          # Identifier
-    | '(' expression ')'          # ParenthesizedExpr
-    | ID '(' argList? ')'         # FunctionCallExpr
-    | vectorLiteral               # Vector
-    | colorLiteral                # Color
-    | listLiteral                 # List
+    : NUMBER                          # NumberLiteral
+    | STRING                          # StringLiteral
+    | 'true'                          # BoolLiteral
+    | 'false'                         # BoolLiteral
+    | 'null'                          # NullLiteral
+    | ID                              # Identifier
+    | '(' expression ')'              # ParenthesizedExpr
+    | ID '(' argList? ')'             # FunctionCallExpr
+    | vectorLiteral                   # Vector
+    | colorLiteral                    # Color
+    | listLiteral                     # List
+    | 'await' primary                 # v0.2: Await expression
+    | 'emit_signal' '(' STRING (',' argList)? ')'  # v0.2: Emit signal
+    | operatorAccess                  # v0.2: @operator.method
+    ;
+
+// v0.2: @operator namespace access (@vector.add, @math.sin, etc.)
+operatorAccess
+    : '@' ID '.' ID '(' argList? ')'
     ;
 
 argList: expression (',' expression)*;

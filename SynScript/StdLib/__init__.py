@@ -21,6 +21,10 @@ from .synmath import SynMath
 from .syncolor import SynColor
 from .syntimer import SynTimer, DeltaTimer
 from .synvector import Vector2, Vector3
+from .synstate import State
+from .synsignal import Signal
+from .synactor import Actor
+from .syntyping import TypeInference
 
 __all__ = [
     'SynMath',
@@ -29,4 +33,8 @@ __all__ = [
     'DeltaTimer',
     'Vector2',
     'Vector3',
+    'State',
+    'Signal',
+    'Actor',
+    'TypeInference',
 ]

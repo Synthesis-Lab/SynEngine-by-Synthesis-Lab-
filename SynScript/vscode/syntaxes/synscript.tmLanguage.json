@@ -57,7 +57,7 @@ limitations under the License.
         },
         {
           "name": "keyword.declaration.syn",
-          "match": "\\b(var|function)\\b"
+          "match": "\\b(var|function|state|signal|actor|async|await)\\b"
         },
         {
           "name": "constant.language.syn",
@@ -70,6 +70,10 @@ limitations under the License.
         {
           "name": "entity.name.decorator.syn",
           "match": "@(export|on_ready|process|signal)\\b"
+        },
+        {
+          "name": "entity.name.operator.syn",
+          "match": "@(vector|math|native|color|operator)\\b"
         }
       ]
     },
@@ -123,7 +127,35 @@ limitations under the License.
       "patterns": [
         {
           "name": "support.class.stdlib.syn",
-          "match": "\\b(SynMath|SynColor|SynTimer|DeltaTimer|Vector2|Vector3|Input)\\b"
+          "match": "\\b(SynMath|SynColor|SynTimer|DeltaTimer|Vector2|Vector3|Input|State|Signal|Actor)\\b"
+        },
+        {
+          "name": "support.class.base.syn",
+          "match": "\\b(TypeInference)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.signal.syn",
+          "match": "=>"
+        },
+        {
+          "name": "keyword.operator.assignment.syn",
+          "match": "(=|\\+=|-=|\\*=|/=)"
+        },
+        {
+          "name": "keyword.operator.comparison.syn",
+          "match": "(==|!=|<=|>=|<|>)"
+        },
+        {
+          "name": "keyword.operator.logical.syn",
+          "match": "\\b(and|or|not)\\b"
+        },
+        {
+          "name": "keyword.operator.arithmetic.syn",
+          "match": "(\\+|-|\\*|/|%|\\*\\*)"
         }
       ]
     }

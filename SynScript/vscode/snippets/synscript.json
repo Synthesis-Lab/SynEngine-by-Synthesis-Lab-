@@ -110,5 +110,67 @@
       "print(${1:message})"
     ],
     "description": "Print a message"
+  },
+  "State Block": {
+    "prefix": "state",
+    "body": [
+      "state ${1:StateName}:",
+      "\tfn on_enter():",
+      "\t\t${2:pass}",
+      "\t",
+      "\tfn tick(delta: float):",
+      "\t\t${3:pass}",
+      "\t",
+      "\tfn on_exit():",
+      "\t\t${4:pass}"
+    ],
+    "description": "Create a state machine block with lifecycle methods"
+  },
+  "Signal Declaration": {
+    "prefix": "signal",
+    "body": [
+      "signal ${1:signal_name}(${2:param1: type1}, ${3:param2: type2})"
+    ],
+    "description": "Declare a signal for event emission"
+  },
+  "Signal Binding": {
+    "prefix": "=>",
+    "body": [
+      "${1:source}.${2:signal_name} => ${3:target}.${4:callback_name}"
+    ],
+    "description": "Bind a signal to a callback (Signal/Slot pattern)"
+  },
+  "Actor Declaration": {
+    "prefix": "actor",
+    "body": [
+      "actor ${1:ActorName}:",
+      "\tvar ${2:property} = ${3:value}",
+      "\t",
+      "\tstate ${4:InitialState}:",
+      "\t\tfn tick(delta: float):",
+      "\t\t\t${5:pass}"
+    ],
+    "description": "Create an actor with scope isolation"
+  },
+  "@Vector Operator": {
+    "prefix": "@vector",
+    "body": [
+      "@vector.${1|add,subtract,multiply,normalize,distance,dot,cross|}(${2:args})"
+    ],
+    "description": "Use native vector operations for performance"
+  },
+  "@Math Operator": {
+    "prefix": "@math",
+    "body": [
+      "@math.${1|sin,cos,tan,sqrt,pow,clamp,lerp|}(${2:args})"
+    ],
+    "description": "Use native math operations for performance"
+  },
+  "Break Statement": {
+    "prefix": "break",
+    "body": [
+      "break"
+    ],
+    "description": "Break out of a loop"
   }
 }
