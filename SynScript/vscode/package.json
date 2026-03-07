@@ -1,9 +1,9 @@
 {
   "name": "synscript-language-support",
-  "displayName": "SynScript Language Support",
-  "description": "Syntax highlighting and language support for SynScript (.syn) files with State Machine, Signal/Slot events, and @Operator namespaces",
+  "displayName": "SynScript - Game Development Language",
+  "description": "SynScript language support with syntax highlighting, dual themes, code snippets, linting, and @Operator namespaces for game development with Godot and Cocos2D",
   "version": "0.2.0",
-  "publisher": "synthesis-lab",
+  "publisher": "SynthesisLab",
   "license": "Apache-2.0",
   "engines": {
     "vscode": "^1.90.0"
@@ -43,6 +43,11 @@
         "label": "SynScript Lab Dark",
         "uiTheme": "vs-dark",
         "path": "./themes/SynScript-Lab-Dark.json"
+      },
+      {
+        "label": "SynScript Lab Light",
+        "uiTheme": "vs",
+        "path": "./themes/SynScript-Lab-Light.json"
       }
     ]
   },

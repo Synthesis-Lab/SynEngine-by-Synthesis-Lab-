@@ -1,0 +1,255 @@
+{
+  "name": "SynScript Lab Light",
+  "type": "light",
+  "colors": {
+    "editor.background": "#f5f7fa",
+    "editor.foreground": "#2c3e50",
+    "editor.lineNumberColor": "#b0bac2",
+    "editor.lineHighlightBackground": "#eff2f5",
+    "editor.selectionBackground": "#bfe6f5",
+    "editor.findMatchBackground": "#fff59d",
+    "editor.findMatchHighlightBackground": "#ffec8b",
+    "editorCursor.foreground": "#1976d2",
+    "editorWhitespace.foreground": "#d0d8e0",
+    "editorBracketMatch.background": "#e3f2fd",
+    "editorBracketMatch.border": "#1976d2",
+    
+    "editorError.foreground": "#c62828",
+    "editorWarning.foreground": "#e65100",
+    "editorInfo.foreground": "#1976d2",
+    
+    "activityBar.background": "#f5f7fa",
+    "activityBar.foreground": "#5a6f7d",
+    "activityBarBadge.background": "#d32f2f",
+    "activityBarBadge.foreground": "#ffffff",
+    
+    "sideBar.background": "#fafbfc",
+    "sideBar.foreground": "#2c3e50",
+    "sideBarTitle.foreground": "#1976d2",
+    
+    "list.hoverBackground": "#f0f2f5",
+    "list.activeSelectionBackground": "#bfe6f5",
+    
+    "statusBar.background": "#f5f7fa",
+    "statusBar.foreground": "#5a6f7d",
+    "statusBar.debuggingBackground": "#e1f5fe",
+    "statusBar.debuggingForeground": "#01579b",
+    
+    "tab.activeBackground": "#ffffff",
+    "tab.activeForeground": "#1976d2",
+    "tab.inactiveBackground": "#f5f7fa",
+    "tab.inactiveForeground": "#5a6f7d",
+    
+    "input.background": "#ffffff",
+    "input.foreground": "#2c3e50",
+    "input.border": "#d0d8e0",
+    
+    "button.background": "#1976d2",
+    "button.foreground": "#ffffff",
+    "button.hoverBackground": "#1565c0",
+    
+    "terminal.background": "#f5f7fa",
+    "terminal.foreground": "#2c3e50",
+    "terminal.ansiBlack": "#546e7a",
+    "terminal.ansiRed": "#c62828",
+    "terminal.ansiGreen": "#00695c",
+    "terminal.ansiYellow": "#f57f17",
+    "terminal.ansiBlue": "#1976d2",
+    "terminal.ansiMagenta": "#6a1b9a",
+    "terminal.ansiCyan": "#00838f",
+    "terminal.ansiWhite": "#2c3e50"
+  },
+  "tokenColors": [
+    {
+      "name": "Comments",
+      "scope": ["comment"],
+      "settings": {
+        "foreground": "#90a4ae",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Strings",
+      "scope": ["string"],
+      "settings": {
+        "foreground": "#00695c"
+      }
+    },
+    {
+      "name": "String Escape",
+      "scope": ["string constant.character.escape"],
+      "settings": {
+        "foreground": "#1976d2"
+      }
+    },
+    {
+      "name": "Numbers",
+      "scope": ["constant.numeric"],
+      "settings": {
+        "foreground": "#6a1b9a"
+      }
+    },
+    {
+      "name": "Built-in Constants",
+      "scope": ["constant.language"],
+      "settings": {
+        "foreground": "#6a1b9a",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Keywords",
+      "scope": ["keyword"],
+      "settings": {
+        "foreground": "#d84315",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Control Flow Keywords",
+      "scope": ["keyword.control"],
+      "settings": {
+        "foreground": "#e65100",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Functions",
+      "scope": ["entity.name.function"],
+      "settings": {
+        "foreground": "#1976d2",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Variables",
+      "scope": ["variable"],
+      "settings": {
+        "foreground": "#2c3e50"
+      }
+    },
+    {
+      "name": "Support Classes/Types",
+      "scope": ["support.class", "support.type"],
+      "settings": {
+        "foreground": "#00838f",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "v0.2: State Keyword",
+      "scope": ["keyword.declaration.state", "keyword.state"],
+      "settings": {
+        "foreground": "#5d28a5",
+        "fontStyle": "bold italic"
+      }
+    },
+    {
+      "name": "v0.2: Signal Keyword",
+      "scope": ["keyword.declaration.signal", "keyword.signal"],
+      "settings": {
+        "foreground": "#0099cc",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "v0.2: Signal Binding Operator (=>)",
+      "scope": ["keyword.operator.signal-bind"],
+      "settings": {
+        "foreground": "#0099cc",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "v0.2: Actor Keyword",
+      "scope": ["keyword.declaration.actor", "keyword.actor"],
+      "settings": {
+        "foreground": "#009688",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "v0.2: @Operator Namespace",
+      "scope": ["keyword.operator.at-namespace"],
+      "settings": {
+        "foreground": "#f57c00",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "v0.2: @vector Operations",
+      "scope": ["keyword.operator.at-vector"],
+      "settings": {
+        "foreground": "#f57c00",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "v0.2: @math Operations",
+      "scope": ["keyword.operator.at-math"],
+      "settings": {
+        "foreground": "#f57c00",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "v0.2: @color Operations",
+      "scope": ["keyword.operator.at-color"],
+      "settings": {
+        "foreground": "#f57c00",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "v0.2: Async/Await Keywords",
+      "scope": ["keyword.async", "keyword.await"],
+      "settings": {
+        "foreground": "#e65100",
+        "fontStyle": "bold italic"
+      }
+    },
+    {
+      "name": "Type Annotations",
+      "scope": ["meta.type.annotation"],
+      "settings": {
+        "foreground": "#00838f"
+      }
+    },
+    {
+      "name": "Decorators",
+      "scope": ["meta.decorator"],
+      "settings": {
+        "foreground": "#d84315",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Meta Blocks - State",
+      "scope": ["meta.block.state"],
+      "settings": {
+        "background": "#f3e5f5"
+      }
+    },
+    {
+      "name": "Meta Blocks - Actor",
+      "scope": ["meta.block.actor"],
+      "settings": {
+        "background": "#e0f2f1"
+      }
+    },
+    {
+      "name": "Operators",
+      "scope": ["keyword.operator"],
+      "settings": {
+        "foreground": "#d84315"
+      }
+    },
+    {
+      "name": "Punctuation",
+      "scope": ["punctuation"],
+      "settings": {
+        "foreground": "#455a64"
+      }
+    }
+  ]
+}

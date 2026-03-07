@@ -1,46 +1,67 @@
-# 🎮 SynEngine - The Hybrid Game Engine
+# 🎮 SynEngine - Hibrit Oyun Motoru Ekosistemi
 
-**Synthesis Lab tarafından geliştirilmekte olan bir oyun motoru.**
+**Synthesis Lab tarafından geliştirilmekte olan çapraz-platform oyun motoru ailesi.**
 
-> **Godot ile desteklenen, C# ile yazılan, SynScript (Python-like) dilinde betiklenen oyun motoru.**
+> **Çift Sürüm Mimarisi**: 
+> - 🏗️ **SynEngine Studio**: Godot destekli, C#/C++ runtime, masaüstü (Windows/macOS/Linux)
+> - 🚀 **SynEngine GO**: Cocos destekli, Java/Kotlin runtime, çapraz-platform (Desktop + Mobil + Web)
 
 ---
 
 ## 📊 Proje Durumu
 
-| Aşama | Durum | İlerleme |
-|-------|-------|----------|
-| **Phase 1: SynScript v0.2.0** | ✅ TAMAMLANDI | 100% |
-| **Phase 2: Godot Entegrasyonu** | ⏳ SIRADA | 0% |
-| **Phase 3: Phaser (Web)** | 🧊 PLANLANIYOR | 0% |
-| **Phase 4: IDE & Ekosistem** | 🧊 PLANLANIYOR | 0% |
+### SynEngine Studio (Amiralgemisi)
+| Aşama | Durum | İlerleme | Açıklama |
+|-------|-------|----------|----------|
+| **Phase 1: SynScript v0.2.0** | ✅ TAMAMLANDI | 100% | Python variant, ANTLR gramer, StdLib |
+| **Phase 2: Godot Entegrasyonu** | ⏳ SIRADA | 0% | Python.NET bridge, SynActor wrapper |
+| **Phase 4: IDE & Ekosistem** | 🧊 SONRASI | 0% | LSP server, visual scripter, package manager |
 
-**Son Güncelleme**: 6 Mart 2026  
-**Sürüm**: v0.2.0 - State Machine, Signal/Slot, @Operators
+### SynEngine GO (Spin-off, Studio'dan sonra başlar)
+| Aşama | Durum | İlerleme | Açıklama |
+|-------|-------|----------|----------|
+| **Phase 3: Cocos Entegrasyonu** | 🧊 PLANLANIYOR | 0% | JavaScript variant, Java/Kotlin runtime |
+| **Phase 4: IDE & Ekosistem** | 🧊 SONRASI | 0% | Mobile/Web support, Android Studio integration |
+
+**Son Güncelleme**: 7 Mart 2026  
+**Sürüm**: v0.2.0 - State Machine, Signal/Slot, @Operators (Python variant)
 
 ---
 
 ## 🎯 Vision
 
-SynEngine, oyun geliştiricilerin **hızlı prototip yapması ve produktif olması** için tasarlanmış bir oyun motorudur. 
+SynEngine, oyun geliştiricilerin **hızlı prototip yapması ve produktif olması** için tasarlanmış bir **çapraz-platform oyun motoru ekosistemidir**.
 
+### SynEngine Studio - Amiralgemisi 🏗️
+- 🎮 **Godot Engine** desteği
+- 🐍 **Python-benzeri SynScript** (v0.2.0+)
+- 💪 **C#/C++ runtime** (.NET 10.0 + native code)
+- 🖥️ **Desktop platforms** (Windows/macOS/Linux)
+- 📚 **Eğitim ve indie dev** odaklı
+
+### SynEngine GO - Spin-off 🚀
+- 🎮 **Cocos Engine** desteği
+- 💻 **JavaScript-benzeri SynScript** (v0.3.0+)
+- ☕ **Java/Kotlin runtime**
+- 📱 **Çapraz-platform** (Desktop + iOS + Android + Web)
+- 🌍 **Mobil ve web oyunları** odaklı
+
+### Shared Features (Her İki Sürüm)
 - 🎮 **State Machine First**: Oyun mantığı için built-in State deseni
 - 📡 **Signal/Slot Events**: Deklaratif event binding (`=>` operatörü)
 - ⚡ **@Operator Namespace**: Performans kritik işlemler için native operators  
-- 🐍 **Python'un Kolaylığı**: SynScript dili Python-friendly
-- 💪 **C#'ın Gücü**: .NET 10.0 ile high-performance
-- 🎮 **Godot Desteği**: Desktop oyunları için
-- 🌐 **Phaser Desteği**: Web oyunları için
+- 🏛️ **Actor Scope Isolation**: Message-based architecture
+- ⏳ **Async/Await Support**: Non-blocking game logic
 - 📚 **Eğitim Dostu**: Başlangıçtan ileri seviyeye
 
 ---
 
 ## 🚀 Hızlı Başlangıç
 
-### Phase 1 v0.2.0 Özellikleri
+### SynScript Dil Örneği (Python Variant - Studio)
 
 ```synscript
-# SynScript - Oyun geliştiriciler için Hibrid dil
+# SynScript - Oyun geliştiriciler için Hibrid dil (Python benzeri)
 
 # ===== State Machine Pattern =====
 @export
@@ -232,7 +253,7 @@ dotnet run
 
 ## 💡 Özellikler
 
-### Phase 1 v0.2.0 ✅ (TAMAMLANDI)
+### Phase 1 v0.2.0 ✅ (TAMAMLANDI - Python Variant)
 
 #### Core Language Features
 - ✅ SynScript dili (ANTLR 4 gramer, transpiler)
@@ -255,28 +276,61 @@ dotnet run
 
 #### Developer Experience
 - ✅ VS Code syntax highlighting
-- ✅ **20+ Code snippets** (variable, function, state, signal, actor, @vector, vb.)
+- ✅ **23+ Code snippets** (variable, function, state, signal, actor, @vector, vb.)
 - ✅ Error handling ve detailed error messages
 - ✅ Language configuration (brackets, indentation)
-- ✅ **v0.2 Theme support** (Lab themed colors)
-- ✅ **v0.2 Semantic highlighting** (State/Signal/Actor renklendirilmesi)
+- ✅ **SynScript-Lab-Dark theme** (game dev optimized)
+- ✅ **Advanced Linter** (6 analytical rules)
+- ✅ **Syn-CLI** (validation, preview, reference lookup)
 
-### Phase 2 ⏳ (SIRADA)
-- ⏳ Godot entegrasyonu
-- ⏳ Python.NET bellek içi köprüsü
+---
+
+### Phase 2 ⏳ (SIRADA - SynEngine Studio)
+**Hedef**: Godot Engine'de SynScript (Python variant) çalıştırmak
+
+- ⏳ Python.NET in-memory bridge
 - ⏳ SynActor sarmalayıcısı (Godot Node2D/Node3D)
 - ⏳ Sinyal eşlemesi (SynScript Signal → Godot signals)
-- ⏳ Inspector entegrasyonu
+- ⏳ Inspector entegrasyonu (@export variables)
+- ⏳ Hot reload desteği
 - ⏳ Real-time preview
+- ⏳ 5+ örnek oyun (character controller, RPG, platformer vb.)
 
-### Phase 3 🧊 (PLANLANIYOR)
-- 🧊 Phaser (Web) entegrasyonu
-- 🧊 Brython/Pyodide çalışma ortamı
-- 🧊 JavaScript transpiler
-- 🧊 Web varlık yönetimi
-- 🧊 Browser debugging
+---
 
-### Phase 4 🧊 (PLANLANIYOR)
+### Phase 3 🧊 (PLANLANIYOR - SynEngine GO)
+**Hedef**: Cocos Engine'de SynScript (JavaScript variant) çalıştırmak
+
+#### 3.1 Language Variant (JavaScript benzeri syntax)
+- 🧊 JavaScript-benzeri SynScript syntax
+- 🧊 Type inference ve optional typing
+- 🧊 Same game concepts (State, Signal, Actor)
+- 🧊 SynScript → TypeScript transpiler
+
+#### 3.2 Cross-Platform Runtime (Java/Kotlin)
+- 🧊 Java/Kotlin Cocos wrapper
+- 🧊 Android NDK integration
+- 🧊 Desktop, Mobile (iOS/Android), Web support
+- 🧊 Gradle build system
+
+#### 3.3 Developer Tools
+- 🧊 Android Studio integration
+- 🧊 Web-based IDE
+- 🧊 Build pipeline (desktop/mobile/web)
+- 🧊 5+ örnek oyun (mobile-optimized)
+
+---
+
+### Phase 4 🧊 (SONRASI - Her İki Sürüm)
+**Hedef**: Professional IDE ve ekosistem
+
+- 🧊 Language Server Protocol (LSP)
+- 🧊 Intellisense ve code completion
+- 🧊 Visual/node-based scripter
+- 🧊 Package manager (syn-pkg)
+- 🧊 Asset store integration
+- 🧊 Official documentation (TR + EN)
+- 🧊 Community support (Discord, forums)
 - 🧊 Language Server Protocol (LSP)
 - 🧊 Görsel betik editörü
 - 🧊 Paket yöneticisi (SynPackage)
@@ -342,14 +396,14 @@ dotnet test SynEngine.Core.Tests/
 
 ## 🤝 Katkıda Bulunma
 
-### İyi Başlangıç Konuları
+### Başlamak İçin İyi Konular
 1. **StdLib Genişletmesi**: Yeni matematik/fizik fonksiyonları
 2. **Örnek Oyunlar**: Kütüphanelerin kullanımını gösteren örnekler
-3. **Belgelendirme**: Türkçe, İngilizce API belgeleri
+3. **Belgelendirme**: Türkçe, İngilizce API referansları
 4. **Testler**: Birim testleri yazma
-5. **Performans**: Profilleme ve iyileştirme
+5. **Performans**: Profilleme ve optimizasyon
 
-### Geliştirme Ayarı
+### Geliştirme Ortamı Kurulumu
 
 ```bash
 # Fork ve klonla
@@ -357,13 +411,13 @@ git clone https://github.com/YOUR_GITHUB/synengine
 cd synengine
 
 # Özellik dalı oluştur
-git checkout -b feature/your-feature
+git checkout -b feature/yeni-ozellik
 
-# Değişiklikleri teslim et
-git commit -am "Add new feature"
+# Değişiklikleri kaydet
+git commit -am "Yeni özellik ekle"
 
 # Gönder
-git push origin feature/your-feature
+git push origin feature/yeni-ozellik
 
 # Pull request açın
 ```
@@ -376,36 +430,38 @@ git push origin feature/your-feature
 
 | Sorun | Durum | Çözüm |
 |-------|-------|-------|
-| Godot entegrasyonu yok | 🔴 | Phase 2 başlangıcında |
-| ANTLR parser derlenmiş durumda değil | 🟡 | Sonraki sürüm |
-| Web desteği eksik | 🔴 | Phase 3 |
-| LSP sunucusu yok | 🔴 | Phase 4 |
+| Godot entegrasyonu henüz yapılmadı | 🔴 | Phase 2'de |
+| ANTLR parser henüz derlenmiş değil | 🟡 | Sonraki sürüm |
+| Web desteği henüz yoktur | 🔴 | Phase 3'te |
+| LSP sunucusu henüz yoktur | 🔴 | Phase 4'te |
 
 ---
 
 ## 📊 İstatistikler
 
 ```
-Phase 1 Tamamlama İstatistikleri:
-├── Toplam Kod Satırı: 700+ (Python + C#)
+Phase 1 v0.2.0 Tamamlama İstatistikleri:
+├── Toplam Kod Satırı: 1500+ (Python + C# + JS)
 ├── StdLib Fonksiyonları: 40+
 ├── Test Fonksiyonları: 7
-├── Geliştirme Süresi: 1 gün
-├── VS Code Snippets: 15+
-└── Dokümantasyon Sayfaları: 5+
+├── VS Code Snippet'leri: 23+
+├── Dokümantasyon Sayfaları: 8+
+├── Linter Kuralları: 6
+└── Theme Renk Grubu: 11+
 ```
 
 ---
 
 ## 🐛 Hata Bildir
 
-Hata mı buldum? [GitHub Issues](https://github.com/synthesis-lab/synengine/issues) üzerine bildir.
+Bir hata mı buldunuz? [GitHub Issues](https://github.com/synthesis-lab/synengine/issues) üzerinde bildir.
 
-Lütfen şunları ekleyin:
-- [ ] Hatanın açıklaması
-- [ ] Tekrarlama adımları
+Lütfen aşağıdakini ekleyin:
+- [ ] Hatanın açık açıklaması
+- [ ] Sorunu tekrarlama adımları
 - [ ] Beklenen vs gerçek davranış
 - [ ] SynEngine sürümü
+- [ ] Kullanılan sistem (Windows/Linux/macOS)
 
 ---
 
@@ -441,15 +497,16 @@ Apache License 2.0 © 2026 Synthesis Lab
 
 ## 🙏 Teşekkürler
 
-- **Godot Foundation** - Üstün oyun motoru
-- **Python Software Foundation** - Python dilinin mükemmel tasarımı  
-- **ANTLR Project** - Ayrıştırıcı üreticisi
-- **Synthesis Lab Ekibi** - SynEngine'in mimarları
+- **Godot Foundation** - Harika oyun motoru
+- **Python Software Foundation** - Python'un tasarımı  
+- **ANTLR Project** - Ayrıştırıcı üreteci
+- **VS Code Community** - Mükemmel geliştirme ortamı
+- **Synthesis Lab Ekibi** - SynEngine'in yaratıcıları
 
 ---
 
-**SynEngine: Oyun Geliştirmeyi Herkes İçin Erişilebilir Kılın 🚀**
+**SynEngine: Oyun Geliştirmeyi Herkese Açık Kılın 🚀**
 
-Detaylı yol haritası için [MASTER_ROADMAP.md](MASTER_ROADMAP.md) bakın.
+Detaylı yol haritası için [MASTER_ROADMAP.md](MASTER_ROADMAP.md) dosyasına bakın.
 
-**SON GÜNCELLEME**: 6 Mart 2026
+**Son Güncelleme**: 7 Mart 2026 (v0.2.0 Sürümü)
